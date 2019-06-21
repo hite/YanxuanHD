@@ -10,12 +10,12 @@ import SwiftUI
 
 // 默认首页的布局和样式
 struct ChildrenContent : View {
-    @State var tabIndex: Int = 0
-    
+    var tabIndex: Int = 0
+
     var body: some View {
         VStack {
-            
             if self.tabIndex == 0 {
+//                CategorySegment()
                 FeatureTab().environmentObject(BannerData.init(""))
             } else {
                 Text("正品保障")
