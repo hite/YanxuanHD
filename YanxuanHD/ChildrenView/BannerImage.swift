@@ -24,7 +24,6 @@ class BannerImageModel: Identifiable {
         self.id = id
         self.imageURL = imageURL
         self.destinationURL = destinationURL
-        
     }
 }
 
@@ -33,13 +32,24 @@ struct BannerImage : View {
     @EnvironmentObject var userData: BannerImageData
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             if self.userData.imgData != nil {
-                Image(uiImage: self.userData.imgData!)
+                self.RenderImage()
             } else {
                 Image("home-banner-sample")
             }
         }
+
+    }
+    
+    func RenderImage() -> some View {
+
+        return Image(uiImage: self.userData.imgData!)
+            .aspectRatio(1, contentMode: .fit)
+            .scaledToFit()
+//            .frame(width: self.width, height: self.height, alignment: .center)
+        .clipped()
+
     }
 }
 

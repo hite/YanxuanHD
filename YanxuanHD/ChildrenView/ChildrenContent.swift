@@ -13,12 +13,13 @@ struct ChildrenContent : View {
     var tabIndex: Int = 0
 
     var body: some View {
-        VStack {
-            if self.tabIndex == 0 {
-//                CategorySegment()
-                FeatureTab().environmentObject(BannerData.init(""))
-            } else {
-                Text("正品保障")
+        GeometryReader { geo in
+            VStack {
+                if self.tabIndex == 0 {
+                    FeatureTab().environmentObject(BannerData.init("", size: CGSize.init(width: geo.size.width, height: 160)))
+                } else {
+                    Text("正品保障")
+                }
             }
         }
     }

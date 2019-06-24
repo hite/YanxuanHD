@@ -14,6 +14,9 @@ final class BannerData: BindableObject {
 
     let didChange = PassthroughSubject<BannerData, Never>()
     
+    var imageWidth: CGFloat
+    var imageHeight: CGFloat
+    
     var bannes: [BannerImageModel] = [] {
         didSet {
             didChange.send(self)
@@ -22,18 +25,21 @@ final class BannerData: BindableObject {
     
     var url: String
     
-    init(_ url: String) {
+    init(_ url: String, size: CGSize) {
         self.url = url
+        self.imageWidth = size.width
+        self.imageHeight = size.height
 
-        self.updateData(url)
+        self.updateData()
     }
     
-    func updateData(_ url: String) -> Void {
+    func updateData() -> Void {
+//        let scale = UIScreen.main.scale
         let imgsURLs = [
-            ("https://yanxuan.nosdn.127.net/ad787884a51be3cf9df166566577ff10.jpg?imageView&quality=95&thumbnail=1920x420","https://act.you.163.com/act/pub/nDFLuzkE7Q.html?_stat_referer=index&_stat_area=banner_5"),
-            ("https://yanxuan.nosdn.127.net/c47d36d7247a6c7ecd390c3b18921868.jpg?imageView&quality=95&thumbnail=1920x420","https://act.you.163.com/act/pub/hiir9OcR1l.html?_stat_referer=index&_stat_area=banner_4"),
-            ("https://yanxuan.nosdn.127.net/33b614fa5c7d36c1ee341a2a9d5f11ce.jpg?watermark&type=1&gravity=northwest&dx=0&dy=0&image=YzdjZjE2YjNiZThkNjA4YmI3MGI3YTRmZDE3YmQ5ZjAucG5n|imageView&quality=95&thumbnail=1920x420","https://act.you.163.com/act/pub/2dxYrg3pAi.html?_stat_referer=index&_stat_area=banner_3"),
-            ("https://yanxuan.nosdn.127.net/b3d2aba21e4bd12dff153142222b1c2a.jpg?imageView&quality=95&thumbnail=1920x420","https://act.you.163.com/act/pub/uyl9wjD97p.html?_stat_referer=index&_stat_area=banner_1")
+            ("https://yanxuan.nosdn.127.net/ad787884a51be3cf9df166566577ff10.jpg?imageView&quality=95","https://act.you.163.com/act/pub/nDFLuzkE7Q.html?_stat_referer=index&_stat_area=banner_5"),
+            ("https://yanxuan.nosdn.127.net/c47d36d7247a6c7ecd390c3b18921868.jpg?imageView&quality=95","https://act.you.163.com/act/pub/hiir9OcR1l.html?_stat_referer=index&_stat_area=banner_4"),
+            ("https://yanxuan.nosdn.127.net/33b614fa5c7d36c1ee341a2a9d5f11ce.jpg?imageView&quality=95","https://act.you.163.com/act/pub/2dxYrg3pAi.html?_stat_referer=index&_stat_area=banner_3"),
+            ("https://yanxuan.nosdn.127.net/b3d2aba21e4bd12dff153142222b1c2a.jpg?imageView&quality=95","https://act.you.163.com/act/pub/uyl9wjD97p.html?_stat_referer=index&_stat_area=banner_1")
         ]
         
         var idx = 0
@@ -43,8 +49,10 @@ final class BannerData: BindableObject {
             DispatchQueue.main.async {
                 self.bannes = imgsURLs.map { (arg0) -> BannerImageModel in
                     let (img, url) = arg0
+                    let imageUrl = img + "&thumbnail=\(Int(self.imageWidth * 1))x\(Int(self.imageHeight * 1))"
+                    print("Downloading \(imageUrl)")
                     idx += 1
-                    return BannerImageModel(id: idx, imageURL: img, destinationURL: url)
+                    return BannerImageModel(id: idx, imageURL: imageUrl, destinationURL: url)
                 }
             }
         }

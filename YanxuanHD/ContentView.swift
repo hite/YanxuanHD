@@ -19,7 +19,6 @@ struct ContentView : View {
                 
                 
                 ChildrenContent()
-                    .background(Color.green)
             }
         }
     }

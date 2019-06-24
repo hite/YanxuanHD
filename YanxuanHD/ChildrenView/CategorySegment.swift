@@ -34,7 +34,7 @@ struct CategorySegmentModel: Identifiable{
 struct CategorySegment : View {
     var selectedIndex = 0
     
-    var dataSource: [CategorySegmentModel] = [
+    static var dataSource: [CategorySegmentModel] = [
         CategorySegmentModel("推荐", viewName: "FeatureTab"),
         CategorySegmentModel("居家生活", url: "https://you.163.com/item/list?categoryId=1005000&_stat_area=nav_2"),
         CategorySegmentModel("服饰箱包", url: "https://you.163.com/item/list?categoryId=1010000&_stat_area=nav_3"),
@@ -44,28 +44,27 @@ struct CategorySegment : View {
         CategorySegmentModel("全球特色", url: "https://you.163.com/item/list?categoryId=1019000&_stat_area=nav_9")
     ]
     var body: some View {
-         VStack {
-            ScrollView(showsHorizontalIndicator: false) {
-                HStack(alignment: .top, spacing: 0) {
-                    ForEach(self.dataSource) { model in
-                        VStack {
-                            Text(model.name)
-                                .bold()
-                                //                            .font(14)
-                                .padding(.top, 10)
-                            
-                            Divider()
-                                .background(Color.yellow)
-                                .padding(EdgeInsets(top: 0, leading: 20, bottom: 5, trailing: 20))
-                                .frame(height: 3)
-                            }
-                            .frame(width: 110)
-                    }
+        ScrollView(showsHorizontalIndicator: false) {
+            HStack(alignment: .top, spacing: 0) {
+                ForEach(Self.dataSource) {
+                    model in
+                    VStack {
+                        Text(model.name)
+                            .bold()
+                            .font(.system(size: 14))
+                            .padding(.top, 30)
+                        
+                        Divider()
+                            .background(Color.white)
+                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 5, trailing: 20))
+                            .frame(height: 3)
+                        }
+                        .frame(width: 100)
+
+            
                 }
             }
-            .frame(height: 40)
-
-        }
+        }.frame(height: 60)
     }
 }
 
