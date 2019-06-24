@@ -14,17 +14,8 @@ struct FeatureTab : View {
     var body: some View {
         VStack {
             CategorySegment()
-            
-            ScrollView(showsHorizontalIndicator: false) {
-                HStack(spacing: 0) {
-                    ForEach(self.userData.bannes) { bannerModel in
-                        BannerImage().environmentObject(BannerImageData(bannerModel))
-                            .cornerRadius(4)
-                        
-                    }
-                    }
-                    .padding(0)
-                }.frame(height: self.userData.imageHeight + 10)
+            BannerScrollView(self.userData)
+                .frame(height: self.userData.imageHeight + 5)
             
             Spacer()
         }
