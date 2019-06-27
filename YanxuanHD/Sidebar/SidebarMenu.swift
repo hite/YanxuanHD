@@ -9,23 +9,35 @@
 import SwiftUI
 
 struct SidebarMenu : View {
-    var imageName: String
-    var title: String
-    
+    var smaller: Bool
+    var model: SidebarMenuItem
+    var activeData: ActiveTabData
+    var isSelected: Bool
+
+    let golden = Color.init(red: 1, green: 1, blue: 1, opacity: 0.25)
     var body: some View {
-        VStack {
-            Image(imageName)
-                .scaleEffect(1/2, anchor: .center)
-            .padding(-20)
-            
-            self.titleView(5)
-        }
+        Group {
+            VStack {
+                Image(model.imageName)
+                    .scaleEffect(self.smaller ? 1 / 2.0 : 1 / 3.0, anchor: .center)
+                    .padding(self.smaller ? -20: -24)
+                
+                    self.titleView(self.smaller ? 5: 4)
+                }
+            }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+            .background(self.isSelected ? golden: Color.clear)
+            .tapAction {
+                withAnimation {
+                    self.activeData.activeMenuItem = self.model
+                }
+            }
     }
     
     func titleView(_ offset: Double) -> some View {
         let top = -2 * offset
         
-        return Text(self.title).color(.white)
+        return Text(self.model.title)
+            .color(.white)
             .font(Font.subheadline)
             .fontWeight(.bold)
             .padding(EdgeInsets(top: Length(top), leading: 0, bottom: Length(offset), trailing: 0))
@@ -35,8 +47,9 @@ struct SidebarMenu : View {
 
 #if DEBUG
 struct SidebarMenu_Previews : PreviewProvider {
+    static let item = SidebarMenuItem(id: 9862, title: "搜索", imageName: "sidebar-search", isSpacer: false, childViewName: "")
     static var previews: some View {
-        SidebarMenu(imageName: "sidebar-search", title: "搜索").background(Color.black)
+        SidebarMenu(smaller: false, model: item, activeData: ActiveTabData(), isSelected: true)
     }
 }
 #endif

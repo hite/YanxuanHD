@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         let vc = UIHostingController(rootView: ContentView())
         vc.title = "好的生活，没那么贵 ~  网易严选"
-        window.rootViewController = UINavigationController(rootViewController: vc)
+        window.rootViewController = vc
         self.window = window
         window.makeKeyAndVisible()
     }

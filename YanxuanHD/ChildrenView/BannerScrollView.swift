@@ -84,15 +84,14 @@ struct BannerScrollView : UIViewRepresentable{
         for (index, imageModel) in self.userData.bannes.enumerated() {
             
             let bannerData = BannerImageData(imageModel)
-            let observer: Subscribers.Sink<Publishers.Once<BannerImageData, Never>> = Subscribers.Sink(receiveCompletion: {
-                print("completed: \($0)")
-            }, receiveValue: {
-                print("received value: \($0)")
-                if let imageData = $0.imgData {
+            // https://icodesign.me/posts/swift-combine/
+            let _ = bannerData.didChange.sink { (bannerData) in
+                //
+                print("received value: \(bannerData)")
+                if let imageData = bannerData.imgData {
                     renderImage(index, imageData)
                 }
-            })
-            bannerData.didChange.subscribe(observer)
+            }
             
             if let imageData = bannerData.imgData {
                 renderImage(index, imageData)

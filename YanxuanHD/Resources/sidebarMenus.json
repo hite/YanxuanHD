@@ -4,55 +4,55 @@
         "title": "推荐",
         "childViewName": "homeView",
         "imageName": "sidebar-home",
-        "isSpacer": false
+        "isSpacer": false, "isActive": false
     },
     {
         "id": 1002,
         "title": "分类",
         "childViewName": "homeView",
         "imageName": "sidebar-list",
-        "isSpacer": false
+        "isSpacer": false, "isActive": false
     },
     {
         "id": 3,
         "title": "发现",
         "childViewName": "homeView",
         "imageName": "sidebar-other",
-        "isSpacer": false
+        "isSpacer": false, "isActive": false
     },
     {
         "id": 5,
         "title": "购物车",
         "childViewName": "homeView",
         "imageName": "sidebar-cart",
-        "isSpacer": false
+        "isSpacer": false, "isActive": false
     },
     {
         "id": 4,
         "title": "我",
         "childViewName": "homeView",
         "imageName": "sidebar-me",
-        "isSpacer": false
+        "isSpacer": false, "isActive": false
     },
     {
         "id": 100,
         "title": "占位符",
         "childViewName": "",
-        "imageName": "",
-        "isSpacer": true
+        "imageName": "space1",
+        "isSpacer": true,"isActive": false
     },
     {
         "id": 6,
         "title": "搜索",
         "childViewName": "homeView",
         "imageName": "sidebar-search",
-        "isSpacer": false
+        "isSpacer": false, "isActive": false
     },
     {
         "id": 8,
         "title": "设置",
         "childViewName": "homeView",
         "imageName": "sidebar-settings",
-        "isSpacer": false
+        "isSpacer": false, "isActive": false
     }
 ]

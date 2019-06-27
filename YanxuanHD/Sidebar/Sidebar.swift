@@ -9,6 +9,12 @@
 import SwiftUI
 
 struct Sidebar : View {
+    @EnvironmentObject var activeTabData: ActiveTabData
+    
+    let orientationDidChangePublisher = NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)
+    
+    @State var orientation = UIDevice.current.orientation
+
     var body: some View {
         VStack {
             ProfileView()
@@ -18,10 +24,14 @@ struct Sidebar : View {
                 if menu.isSpacer {
                     Spacer()
                 } else {
-                    SidebarMenu(imageName: menu.imageName, title: menu.title)
+                    SidebarMenu(smaller: false, model: menu, activeData: self.activeTabData, isSelected: self.activeTabData.activeMenuItem.id == menu.id)
                 }
             }
         }.padding(.bottom, 5)
+        .onReceive(orientationDidChangePublisher) { (notif) in
+            print("Notificaton = \(notif)")
+            self.orientation = UIDevice.current.orientation
+        }
     }
 }
 

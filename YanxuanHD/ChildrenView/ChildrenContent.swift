@@ -10,15 +10,15 @@ import SwiftUI
 
 // 默认首页的布局和样式
 struct ChildrenContent : View {
-    var tabIndex: Int = 0
+    @EnvironmentObject var activeTabData: ActiveTabData
 
     var body: some View {
         GeometryReader { geo in
             VStack {
-                if self.tabIndex == 0 {
-                    FeatureTab().environmentObject(BannerData.init("", size: CGSize.init(width: geo.size.width, height: 160)))
+                if self.activeTabData.activeMenuItem.id == 1001 {
+                    FeatureTab(userData: BannerData.init("", size: CGSize.init(width: geo.size.width, height: 160)))
                 } else {
-                    Text("正品保障")
+                    Text("正品保障 \(self.activeTabData.activeMenuItem.title)")
                 }
             }
         }
@@ -31,7 +31,7 @@ struct ChildrenContent : View {
 struct ChildrenContent_Previews : PreviewProvider {
 
     static var previews: some View {
-        ChildrenContent(tabIndex: 0)
+        ChildrenContent()
     }
 }
 #endif
