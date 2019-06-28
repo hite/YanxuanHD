@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+let kBrandColor = Color.init(red: 0.83, green: 0.16, blue: 0.18)
+let kBrandUIColor = UIColor.init(red: 0.83, green: 0.16, blue: 0.18, alpha: 1)
 
 struct ContentView : View {
     let activeTabData = ActiveTabData()
