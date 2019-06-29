@@ -13,13 +13,11 @@ struct ChildrenContent : View {
     @EnvironmentObject var activeTabData: ActiveTabData
 
     var body: some View {
-        GeometryReader { geo in
-            VStack {
-                if self.activeTabData.activeMenuItem.id == 1001 {
-                    FeatureTab(userData: BannerData.init("", size: CGSize.init(width: geo.size.width, height: 160)))
-                } else {
-                    Text("正品保障 \(self.activeTabData.activeMenuItem.title)")
-                }
+        VStack {
+            if self.activeTabData.activeMenuItem.id == 1001 {
+                FeatureTab()
+            } else {
+                Text("正品保障 \(self.activeTabData.activeMenuItem.title)")
             }
         }
     }

@@ -14,44 +14,38 @@ import Combine
 class BannerActionDelegate {
     var banners: [BannerImageModel]
     
-    lazy var tapGesture = self.getTapGesture()
-    
     init(_ banners: [BannerImageModel]) {
         self.banners = banners
     }
-    
-    private func getTapGesture() -> UITapGestureRecognizer {
-        let tapGesture = UITapGestureRecognizer()
-        tapGesture.addTarget(self, action: #selector(tapBanner(_:)))
-        return tapGesture
-    }
-    
+
     @objc func tapBanner(_ sender: UIGestureRecognizer) {
         let index = sender.view!.tag
         let bannerModel = self.banners[index]
-        let vc = UIHostingController(rootView: Text("What does the fox say"))
+        let vc = UIHostingController(rootView: WebView(urlString: bannerModel.destinationURL))
         print("Go to url \(bannerModel.destinationURL)")
         
-        guard let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController else {
+        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
             print("fail get root viewController")
             return
         }
         
-        navigationController.pushViewController(vc, animated: true)
+        rootViewController.present(vc, animated: true, completion: nil)
     }
 }
 
 
 struct BannerScrollView : UIViewRepresentable{
-    var userData: BannerData
-    var actionDelegate: BannerActionDelegate
+    var imageWidth: CGFloat
+    var imageHeight: CGFloat
+    
     func makeCoordinator() -> Coordinater {
         Coordinater(self)
     }
     
-    init(_ userData: BannerData) {
-        self.userData = userData
-        self.actionDelegate = BannerActionDelegate(userData.bannes)
+    init(imageWidth: CGFloat, imageHeight: CGFloat) {
+        self.imageWidth = imageWidth
+        self.imageHeight = imageHeight
+        print("\(imageWidth) = userData.imageWidth")
     }
     
     func makeUIView(context: UIViewRepresentableContext<BannerScrollView>) -> UIScrollView {
@@ -67,34 +61,47 @@ struct BannerScrollView : UIViewRepresentable{
     func updateUIView(_ uiView: UIScrollView, context: UIViewRepresentableContext<BannerScrollView>) {
         print("What? ")
         
-        // 使用数据填充 View
-        let list = self.userData.bannes
-        let w = self.userData.imageWidth, h = self.userData.imageHeight
-        uiView.contentSize = CGSize(width: CGFloat(list.count) * w, height: h)
-        
         let renderImage: (Int, UIImage) -> Void = { (idx, imageData)in
             let img = UIImageView(image: imageData)
-            img.frame = CGRect.init(x: CGFloat(idx) * w, y: 0, width: w, height: h)
+            img.frame = CGRect.init(x: CGFloat(idx) * self.imageWidth, y: 0, width: self.imageWidth, height: self.imageHeight)
             img.tag = idx
             
-            img.addGestureRecognizer(self.actionDelegate.tapGesture)
+            img.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer()
+            tap.addTarget(context.coordinator.actionDelegate!, action: #selector(BannerActionDelegate.tapBanner))
+            img.addGestureRecognizer(tap)
             uiView.addSubview(img)
         }
-        
-        for (index, imageModel) in self.userData.bannes.enumerated() {
+
+        let userData: BannerData = context.coordinator.fetchUserData()
+        let _ = userData.didChange.sink { (ud) in
+            // 使用数据填充 View
+            uiView.subviews.forEach { (view) in
+                view.removeFromSuperview()
+            }
             
-            let bannerData = BannerImageData(imageModel)
-            // https://icodesign.me/posts/swift-combine/
-            let _ = bannerData.didChange.sink { (bannerData) in
-                //
-                print("received value: \(bannerData)")
+            
+            let w = self.imageWidth, h = self.imageHeight
+            let banners = ud.bannes
+            context.coordinator.actionDelegate = BannerActionDelegate(banners)
+            
+            uiView.contentSize = CGSize(width: CGFloat(banners.count) * w, height: h)
+            
+            for (index, imageModel) in banners.enumerated() {
+                
+                let bannerData = BannerImageData(imageModel)
+                // https://icodesign.me/posts/swift-combine/
+                let _ = bannerData.didChange.sink { (bannerData) in
+                    //
+                    print("received value: \(bannerData)")
+                    if let imageData = bannerData.imgData {
+                        renderImage(index, imageData)
+                    }
+                }
+                
                 if let imageData = bannerData.imgData {
                     renderImage(index, imageData)
                 }
-            }
-            
-            if let imageData = bannerData.imgData {
-                renderImage(index, imageData)
             }
             
         }
@@ -103,9 +110,16 @@ struct BannerScrollView : UIViewRepresentable{
     
     class Coordinater: NSObject, UIScrollViewDelegate {
         var scroll: BannerScrollView
+        var actionDelegate: BannerActionDelegate?
         
         init(_ control: BannerScrollView) {
             self.scroll = control
+        }
+        
+        func fetchUserData() -> BannerData {
+            let r = BannerData("", width: self.scroll.imageWidth, height: self.scroll.imageHeight)
+            
+            return r
         }
         
         func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -123,8 +137,7 @@ struct BannerScrollView_Previews : PreviewProvider {
     static let sampe = BannerImageModel.init(id: 1, imageURL: "https://yanxuan.nosdn.127.net/6d83b8e30b1d0a0874dbb068dfc2503a.jpg?imageView&quality=95", destinationURL: "https://act.you.163.com/act/pub/nDFLuzkE7Q.html?_stat_referer=index&_stat_area=banner_5")
     
     static var previews: some View {
-        BannerScrollView(BannerData.init("", size: CGSize.init(width: 200, height: 100)))
-        
+        BannerScrollView(imageWidth: 200, imageHeight: 100)
     }
 }
 #endif

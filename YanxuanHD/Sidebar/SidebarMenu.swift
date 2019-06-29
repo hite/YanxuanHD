@@ -22,7 +22,7 @@ struct SidebarMenu : View {
                     .scaleEffect(self.smaller ? 1 / 2.0 : 1 / 3.0, anchor: .center)
                     .padding(self.smaller ? -20: -24)
                 
-                    self.titleView(self.smaller ? 5: 4)
+                    self.titleView(self.smaller ? 4: 5)
                 }
             }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .background(self.isSelected ? golden: Color.clear)

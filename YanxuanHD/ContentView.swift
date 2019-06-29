@@ -22,7 +22,8 @@ struct ContentView : View {
                 .background(Color.init(red: 0.15, green: 0.11, blue: 0.06))
             
             ChildrenContent()
-                .environmentObject(activeTabData)
+                .environmentObject(self.activeTabData)
+            .padding(.leading, 15)
         }
     }
 }

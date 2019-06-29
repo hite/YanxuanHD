@@ -14,9 +14,6 @@ final class BannerData: BindableObject {
 
     let didChange = PassthroughSubject<BannerData, Never>()
     
-    var imageWidth: CGFloat
-    var imageHeight: CGFloat
-    
     var bannes: [BannerImageModel] = [] {
         didSet {
             didChange.send(self)
@@ -25,15 +22,12 @@ final class BannerData: BindableObject {
     
     var url: String
     
-    init(_ url: String, size: CGSize) {
+    init(_ url: String, width: CGFloat, height: CGFloat) {
         self.url = url
-        self.imageWidth = size.width
-        self.imageHeight = size.height
-
-        self.updateData()
+        self.updateData(imageWidth: width, imageHeight: height)
     }
     
-    func updateData() -> Void {
+    func updateData(imageWidth: CGFloat, imageHeight: CGFloat) -> Void {
 //        let scale = UIScreen.main.scale
         let imgsURLs = [
             ("https://yanxuan.nosdn.127.net/ad787884a51be3cf9df166566577ff10.jpg?imageView&quality=95","https://act.you.163.com/act/pub/nDFLuzkE7Q.html?_stat_referer=index&_stat_area=banner_5"),
@@ -49,7 +43,7 @@ final class BannerData: BindableObject {
             DispatchQueue.main.async {
                 self.bannes = imgsURLs.map { (arg0) -> BannerImageModel in
                     let (img, url) = arg0
-                    let imageUrl = img + "&thumbnail=\(Int(self.imageWidth * 1))x\(Int(self.imageHeight * 1))"
+                    let imageUrl = img + "&thumbnail=\(Int(imageWidth * 1))x\(Int(imageHeight * 1))"
                     print("Downloading \(imageUrl)")
                     idx += 1
                     return BannerImageModel(id: idx, imageURL: imageUrl, destinationURL: url)

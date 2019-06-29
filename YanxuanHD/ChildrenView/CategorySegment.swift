@@ -26,8 +26,10 @@ struct CategorySegment : View {
                         
                         Divider()
                             .background(self.currentModel.id == model.id ? kBrandColor : Color.black)
+                            .opacity(0.5)
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 5, trailing: 20))
-                            .frame(height: 3)
+                            .frame(height: 1)
+                        .luminanceToAlpha()
                         
                         }
                         .frame(width: 100)
@@ -39,6 +41,7 @@ struct CategorySegment : View {
                 }
             }
         }.frame(height: 60)
+
     }
 }
 
