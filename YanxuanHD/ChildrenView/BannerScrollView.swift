@@ -35,9 +35,10 @@ class BannerActionDelegate {
 
 
 struct BannerScrollView : UIViewRepresentable{
+
     var imageWidth: CGFloat
     var imageHeight: CGFloat
-    
+ 
     func makeCoordinator() -> Coordinater {
         Coordinater(self)
     }
@@ -48,67 +49,108 @@ struct BannerScrollView : UIViewRepresentable{
         print("\(imageWidth) = userData.imageWidth")
     }
     
-    func makeUIView(context: UIViewRepresentableContext<BannerScrollView>) -> UIScrollView {
+    func makeUIView(context: UIViewRepresentableContext<BannerScrollView>) -> UIView {
+        
+        let container = UIView()
+        
         let sv = UIScrollView()
         sv.isPagingEnabled = true
         sv.showsVerticalScrollIndicator = false
         sv.showsHorizontalScrollIndicator = false
         sv.delegate = context.coordinator
-
-        return sv
+        container.addSubview(sv)
+        
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            sv.leftAnchor.constraint(equalTo: container.leftAnchor),
+            sv.topAnchor.constraint(equalTo: container.topAnchor),
+            sv.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            sv.rightAnchor.constraint(equalTo: container.rightAnchor)
+        ])
+        
+        // pageSize
+        let pageControl = UIView()
+        pageControl.backgroundColor = .init(white: 0, alpha: 0.5)
+        pageControl.frame = CGRect(x: 0, y: 10, width: 40, height: 20)
+        pageControl.clipsToBounds = true
+        pageControl.layer.cornerRadius = 4
+        let label = UILabel()
+        label.frame = pageControl.bounds
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 10)
+        label.text = "1 / 4"
+        label.textAlignment = .center
+        pageControl.addSubview(label)
+        container.addSubview(pageControl)
+        
+        return container
     }
     
-    func updateUIView(_ uiView: UIScrollView, context: UIViewRepresentableContext<BannerScrollView>) {
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<BannerScrollView>) {
         print("What? ")
-        
-        let renderImage: (Int, UIImage) -> Void = { (idx, imageData)in
-            let img = UIImageView(image: imageData)
-            img.frame = CGRect.init(x: CGFloat(idx) * self.imageWidth, y: 0, width: self.imageWidth, height: self.imageHeight)
-            img.tag = idx
-            
-            img.isUserInteractionEnabled = true
-            let tap = UITapGestureRecognizer()
-            tap.addTarget(context.coordinator.actionDelegate!, action: #selector(BannerActionDelegate.tapBanner))
-            img.addGestureRecognizer(tap)
-            uiView.addSubview(img)
-        }
-
+ 
         let userData: BannerData = context.coordinator.fetchUserData()
         let _ = userData.didChange.sink { (ud) in
             // 使用数据填充 View
-            uiView.subviews.forEach { (view) in
+            guard let scrollView = uiView.subviews.first as? UIScrollView else {
+                print("UIScrollView doesn\t exsits")
+                return
+            }
+            print("UIScrollView size = \(scrollView.frame)")
+            // 先把位置占好
+            scrollView.subviews.forEach { (view) in
                 view.removeFromSuperview()
             }
-            
+            scrollView.setContentOffset(.zero, animated: true)
             
             let w = self.imageWidth, h = self.imageHeight
             let banners = ud.bannes
             context.coordinator.actionDelegate = BannerActionDelegate(banners)
             
-            uiView.contentSize = CGSize(width: CGFloat(banners.count) * w, height: h)
+            scrollView.contentSize = CGSize(width: CGFloat(banners.count) * w, height: h)
+            
+            for idx in 0...banners.count - 1 {
+                let img = UIImageView()
+                img.frame = CGRect.init(x: CGFloat(idx) * self.imageWidth, y: 0, width: self.imageWidth, height: self.imageHeight)
+                img.tag = idx
+                img.contentMode = .scaleAspectFit
+                
+                img.isUserInteractionEnabled = true
+                let tap = UITapGestureRecognizer()
+                tap.addTarget(context.coordinator.actionDelegate!, action: #selector(BannerActionDelegate.tapBanner))
+                img.addGestureRecognizer(tap)
+                scrollView.addSubview(img)
+            }
+            let updateImage: (Int, UIImage) -> Void = { (idx, imageData) in
+                if idx < scrollView.subviews.count {
+                    if let img = scrollView.subviews[idx] as? UIImageView {
+                        img.image = imageData
+                    }
+                }
+            }
             
             for (index, imageModel) in banners.enumerated() {
                 
                 let bannerData = BannerImageData(imageModel)
                 // https://icodesign.me/posts/swift-combine/
+                if let imageData = bannerData.imgData {
+                    updateImage(index, imageData)
+                }
                 let _ = bannerData.didChange.sink { (bannerData) in
                     //
                     print("received value: \(bannerData)")
                     if let imageData = bannerData.imgData {
-                        renderImage(index, imageData)
+                        updateImage(index, imageData)
                     }
-                }
-                
-                if let imageData = bannerData.imgData {
-                    renderImage(index, imageData)
                 }
             }
             
+            context.coordinator.updatePageControl(scrollView)
         }
     }
     
-    
     class Coordinater: NSObject, UIScrollViewDelegate {
+        
         var scroll: BannerScrollView
         var actionDelegate: BannerActionDelegate?
         
@@ -118,12 +160,20 @@ struct BannerScrollView : UIViewRepresentable{
         
         func fetchUserData() -> BannerData {
             let r = BannerData("", width: self.scroll.imageWidth, height: self.scroll.imageHeight)
-            
             return r
         }
         
         func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
             print("Srolling did end, offset.x = \(scrollView.contentOffset.x)")
+            self.updatePageControl(scrollView)
+        }
+        func updatePageControl(_ scrollView: UIScrollView) -> Void {
+            let singleWidth = scrollView.subviews.first?.bounds.size.width ?? self.scroll.imageWidth
+            let currentIdx = Int(scrollView.contentOffset.x / singleWidth) + 1
+            
+            if let num = scrollView.superview?.subviews.last?.subviews.first as? UILabel {
+                num.text = "\(currentIdx) / \(Int(scrollView.contentSize.width / singleWidth))"
+            }
         }
         func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
             self.scrollViewDidEndDecelerating(scrollView)

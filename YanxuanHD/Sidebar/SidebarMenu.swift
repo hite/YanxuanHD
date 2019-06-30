@@ -22,7 +22,7 @@ struct SidebarMenu : View {
                     .scaleEffect(self.smaller ? 1 / 2.0 : 1 / 3.0, anchor: .center)
                     .padding(self.smaller ? -20: -24)
                 
-                    self.titleView(self.smaller ? 4: 5)
+                    self.titleView(self.smaller ? 5: 4)
                 }
             }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .background(self.isSelected ? golden: Color.clear)
@@ -40,7 +40,7 @@ struct SidebarMenu : View {
             .color(.white)
             .font(Font.subheadline)
             .fontWeight(.bold)
-            .padding(EdgeInsets(top: Length(top), leading: 0, bottom: Length(offset), trailing: 0))
+            .padding(EdgeInsets(top: Length(top), leading: 0, bottom: Length(2 * offset), trailing: 0))
     }
 
 }

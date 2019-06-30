@@ -43,7 +43,7 @@ final class BannerData: BindableObject {
             DispatchQueue.main.async {
                 self.bannes = imgsURLs.map { (arg0) -> BannerImageModel in
                     let (img, url) = arg0
-                    let imageUrl = img + "&thumbnail=\(Int(imageWidth * 1))x\(Int(imageHeight * 1))"
+                    let imageUrl = img + "&thumbnail=\(Int(imageWidth * 2))x\(Int(imageHeight * 2))"
                     print("Downloading \(imageUrl)")
                     idx += 1
                     return BannerImageModel(id: idx, imageURL: imageUrl, destinationURL: url)

@@ -11,6 +11,14 @@
 		485504E222BB5DD50064D222 /* BannerImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485504E122BB5DD50064D222 /* BannerImage.swift */; };
 		485504E422BB75DA0064D222 /* FeatureTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485504E322BB75DA0064D222 /* FeatureTab.swift */; };
 		4858F3F422C4EFD100E753E5 /* ActiveTabData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858F3F322C4EFD100E753E5 /* ActiveTabData.swift */; };
+		48663E5422C71E77005F58FF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48663E5322C71E77005F58FF /* WebViewController.swift */; };
+		48663E5622C7200D005F58FF /* apphost.js in Resources */ = {isa = PBXBuildFile; fileRef = 48663E5522C7200D005F58FF /* apphost.js */; };
+		48663E5822C758DD005F58FF /* fetch.js in Resources */ = {isa = PBXBuildFile; fileRef = 48663E5722C758DD005F58FF /* fetch.js */; };
+		48663E5B22C76E38005F58FF /* OverseaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48663E5A22C76E38005F58FF /* OverseaSection.swift */; };
+		48663E5D22C76F14005F58FF /* OverseaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48663E5C22C76F14005F58FF /* OverseaData.swift */; };
+		48663E5F22C77061005F58FF /* OverseaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48663E5E22C77061005F58FF /* OverseaModel.swift */; };
+		4867189822C7CB51004FB5BC /* NetworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4867189722C7CB51004FB5BC /* NetworkImage.swift */; };
+		4867189A22C7CB6D004FB5BC /* NetworkImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4867189922C7CB6D004FB5BC /* NetworkImageData.swift */; };
 		487834FD22B9D8B0004A8421 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487834FC22B9D8B0004A8421 /* AppDelegate.swift */; };
 		487834FF22B9D8B0004A8421 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487834FE22B9D8B0004A8421 /* SceneDelegate.swift */; };
 		4878350122B9D8B0004A8421 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4878350022B9D8B0004A8421 /* ContentView.swift */; };
@@ -38,6 +46,14 @@
 		485504E122BB5DD50064D222 /* BannerImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerImage.swift; sourceTree = "<group>"; };
 		485504E322BB75DA0064D222 /* FeatureTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureTab.swift; sourceTree = "<group>"; };
 		4858F3F322C4EFD100E753E5 /* ActiveTabData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTabData.swift; sourceTree = "<group>"; };
+		48663E5322C71E77005F58FF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		48663E5522C7200D005F58FF /* apphost.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = apphost.js; sourceTree = "<group>"; };
+		48663E5722C758DD005F58FF /* fetch.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = fetch.js; sourceTree = "<group>"; };
+		48663E5A22C76E38005F58FF /* OverseaSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverseaSection.swift; sourceTree = "<group>"; };
+		48663E5C22C76F14005F58FF /* OverseaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverseaData.swift; sourceTree = "<group>"; };
+		48663E5E22C77061005F58FF /* OverseaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverseaModel.swift; sourceTree = "<group>"; };
+		4867189722C7CB51004FB5BC /* NetworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImage.swift; sourceTree = "<group>"; };
+		4867189922C7CB6D004FB5BC /* NetworkImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImageData.swift; sourceTree = "<group>"; };
 		487834F922B9D8B0004A8421 /* YanxuanHD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YanxuanHD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		487834FC22B9D8B0004A8421 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		487834FE22B9D8B0004A8421 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,8 +95,28 @@
 				48ECBA4822C5B8D8005C7323 /* WebView.swift */,
 				4878351222B9E746004A8421 /* BackgroundColor.swift */,
 				480842F722C5F21200A31ACB /* Loading.swift */,
+				4867189722C7CB51004FB5BC /* NetworkImage.swift */,
+				4867189922C7CB6D004FB5BC /* NetworkImageData.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		48663E5222C71E4F005F58FF /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				48663E5322C71E77005F58FF /* WebViewController.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		48663E5922C76E03005F58FF /* OverseaSection */ = {
+			isa = PBXGroup;
+			children = (
+				48663E5A22C76E38005F58FF /* OverseaSection.swift */,
+				48663E5C22C76F14005F58FF /* OverseaData.swift */,
+				48663E5E22C77061005F58FF /* OverseaModel.swift */,
+			);
+			path = OverseaSection;
 			sourceTree = "<group>";
 		};
 		487834F022B9D8B0004A8421 = {
@@ -102,6 +138,7 @@
 		487834FB22B9D8B0004A8421 /* YanxuanHD */ = {
 			isa = PBXGroup;
 			children = (
+				48663E5222C71E4F005F58FF /* Networking */,
 				480842F622C5F1B900A31ACB /* Views */,
 				4878351B22BA52FD004A8421 /* Model */,
 				48FE22C722BB360A00DB64B0 /* ChildrenView */,
@@ -149,6 +186,8 @@
 		4878352022BA572E004A8421 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				48663E5522C7200D005F58FF /* apphost.js */,
+				48663E5722C758DD005F58FF /* fetch.js */,
 				4878352122BA575A004A8421 /* sidebarMenus.json */,
 				48ECBA4A22C5C26C005C7323 /* cssRule.js */,
 			);
@@ -158,6 +197,7 @@
 		48FE22C722BB360A00DB64B0 /* ChildrenView */ = {
 			isa = PBXGroup;
 			children = (
+				48663E5922C76E03005F58FF /* OverseaSection */,
 				4878351022B9DC88004A8421 /* ChildrenContent.swift */,
 				4881B88E22C07C1D00B26D0F /* BannerScrollView.swift */,
 				485504E122BB5DD50064D222 /* BannerImage.swift */,
@@ -229,8 +269,10 @@
 			files = (
 				4878350922B9D8B3004A8421 /* LaunchScreen.storyboard in Resources */,
 				4878350622B9D8B3004A8421 /* Preview Assets.xcassets in Resources */,
+				48663E5622C7200D005F58FF /* apphost.js in Resources */,
 				4878350322B9D8B3004A8421 /* Assets.xcassets in Resources */,
 				4878352222BA575A004A8421 /* sidebarMenus.json in Resources */,
+				48663E5822C758DD005F58FF /* fetch.js in Resources */,
 				48ECBA4B22C5C26C005C7323 /* cssRule.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,20 +287,26 @@
 				4878351122B9DC88004A8421 /* ChildrenContent.swift in Sources */,
 				4881B88F22C07C1D00B26D0F /* BannerScrollView.swift in Sources */,
 				480842F822C5F21200A31ACB /* Loading.swift in Sources */,
+				48663E5422C71E77005F58FF /* WebViewController.swift in Sources */,
 				4878351F22BA5449004A8421 /* Data.swift in Sources */,
 				4858F3F422C4EFD100E753E5 /* ActiveTabData.swift in Sources */,
 				487834FD22B9D8B0004A8421 /* AppDelegate.swift in Sources */,
+				48663E5D22C76F14005F58FF /* OverseaData.swift in Sources */,
 				4878351622BA0865004A8421 /* ProfileView.swift in Sources */,
 				4878351A22BA2F23004A8421 /* SidebarMenu.swift in Sources */,
+				4867189822C7CB51004FB5BC /* NetworkImage.swift in Sources */,
 				4878351322B9E746004A8421 /* BackgroundColor.swift in Sources */,
 				4878351D22BA5384004A8421 /* SidebarMenuData.swift in Sources */,
 				487834FF22B9D8B0004A8421 /* SceneDelegate.swift in Sources */,
 				48A0450322BC893800748BB5 /* BannerData.swift in Sources */,
+				4867189A22C7CB6D004FB5BC /* NetworkImageData.swift in Sources */,
 				485504E222BB5DD50064D222 /* BannerImage.swift in Sources */,
 				4878351822BA16B0004A8421 /* Sidebar.swift in Sources */,
+				48663E5F22C77061005F58FF /* OverseaModel.swift in Sources */,
 				485504E422BB75DA0064D222 /* FeatureTab.swift in Sources */,
 				48A0450722BCBC8E00748BB5 /* CategorySegment.swift in Sources */,
 				48ECBA4922C5B8D8005C7323 /* WebView.swift in Sources */,
+				48663E5B22C76E38005F58FF /* OverseaSection.swift in Sources */,
 				4878350122B9D8B0004A8421 /* ContentView.swift in Sources */,
 				48A0450522BCB22200748BB5 /* BannerImageData.swift in Sources */,
 			);

@@ -46,21 +46,19 @@ struct FeatureTab : View {
     
     let singleHeight:CGFloat = 150
     var body: some View {
-        VStack {
+        VStack() {
             CategorySegment(currentModel: $currentSegmentModel)
             
             if "FeatureTab" == currentSegmentModel.destinationViewName  {
-                GeometryReader { geo in
-                    BannerScrollView(imageWidth: geo.size.width, imageHeight: self.singleHeight)
-                        .frame(height: self.singleHeight + 5)
-                        .onDisappear {
-                            print("BannerScrollView disappear")
-                        }.onAppear {
-                           print("BannerScrollView appear")
-                    }
+                List() {
+                    GeometryReader { geo in
+                        BannerScrollView(imageWidth: geo.size.width, imageHeight: self.singleHeight)
+                        }
+                        .frame(height: 160)
+                    OverseaSection(userData: OverseaData())
                 }
-                
-                Spacer()
+                .listStyle(.plain)
+                .listRowInsets(EdgeInsets())
             } else {
                 WebView(urlString: currentSegmentModel.destinationURL)
             }
@@ -72,11 +70,9 @@ struct FeatureTab : View {
 
 
 #if DEBUG
-//struct FeatureTab_Previews : PreviewProvider {
-//    static let sampe = BannerImageModel.init(id: 1, imageURL: "https://yanxuan.nosdn.127.net/6d83b8e30b1d0a0874dbb068dfc2503a.jpg?imageView&quality=95", destinationURL: "https://act.you.163.com/act/pub/nDFLuzkE7Q.html?_stat_referer=index&_stat_area=banner_5")
-//    @State static var userData = BannerData.init("", imageWidth: 200, imageHeight: 100)
-//    static var previews: some View {
-//        FeatureTab(userData: $userData)
-//    }
-//}
+struct FeatureTab_Previews : PreviewProvider {
+    static var previews: some View {
+        FeatureTab()
+    }
+}
 #endif

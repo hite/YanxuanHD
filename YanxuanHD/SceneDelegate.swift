@@ -12,6 +12,8 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    // 用 WebView 来充当数据源
+    var networking: UIWindow?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -21,10 +23,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Use a UIHostingController as window root view controller
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let vc = UIHostingController(rootView: ContentView())
-        vc.title = "好的生活，没那么贵 ~  网易严选"
+        let vc = WebViewController() {
+//            self.networking
+            
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            let vc = UIHostingController(rootView: ContentView())
+            window.rootViewController = vc
+            self.window = window
+            window.makeKeyAndVisible()
+            
+        }
+        vc.url = "https://you.163.com"
         window.rootViewController = vc
-        self.window = window
+        //        window.isHidden = false
+        self.networking = window
         window.makeKeyAndVisible()
     }
 
