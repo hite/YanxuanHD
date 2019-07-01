@@ -5,6 +5,8 @@ window.appHost.fetch = function(action) {
         ret = JSON_DATA['tagList']
     } else if (action == 'newarrival') {
         ret = JSON_DATA['newItemList']
+    } else if (action == 'banners') {
+        ret = JSON_DATA['focusList']
     } else if (action == 'topsale'){
         ret = JSON_DATA['indexPopularItemVO']['popularItemList']
     } else if (action == 'flashsale'){

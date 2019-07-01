@@ -25,6 +25,13 @@ class BannerImageModel: Identifiable {
         self.imageURL = imageURL
         self.destinationURL = destinationURL
     }
+    
+    init(from: Dictionary<String, Any>) {
+        kIdSeed += 1
+        self.id = from["id"] as! Int
+        self.destinationURL = from["targetUrl"] as! String
+        self.imageURL = from["picUrl"] as! String
+    }
 }
 
 

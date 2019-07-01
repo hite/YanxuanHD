@@ -22,23 +22,16 @@ final class OverseaData: BindableObject {
     init() {
         var list: [OverseaModel] = []
         
-        NotificationCenter.default.post(name: .webViewDataRequest, object: "oversea");
-        NotificationCenter.default.addObserver(forName: .webViewDataResponse, object: nil, queue: nil) { (notif) in
-            if let ret = notif.object as? Dictionary<String, Any?> {
-                print("webViewDataResponse = \(String(describing: ret))")
-                if let action = ret["action"] as? String {
-                    if action == "oversea" {
-                        if let items = ret["param"] as? [Dictionary<String, Any>]{
-                            for item in items {
-                                list.append(OverseaModel(from: item))
-                                print(item)
-                            }
-                            
-                            self.list = list
-                        }
-                    }
+        Networking.fetch(.oversea) { (r) in
+            if let items = r as? [Dictionary<String, Any>]{
+                for item in items {
+                    list.append(OverseaModel(from: item))
+                    print(item)
                 }
+                
+                self.list = list
             }
         }
+
     }
 }
