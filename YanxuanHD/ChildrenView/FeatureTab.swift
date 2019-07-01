@@ -55,7 +55,10 @@ struct FeatureTab : View {
                         BannerScrollView(imageWidth: geo.size.width, imageHeight: self.singleHeight)
                         }
                         .frame(height: 160)
+                    
                     OverseaSection(userData: OverseaData())
+                    
+                    NewArrivalSection(userData: NewArrivalData())
                 }
                 .listStyle(.plain)
                 .listRowInsets(EdgeInsets())

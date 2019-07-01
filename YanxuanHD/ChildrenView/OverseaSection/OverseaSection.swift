@@ -14,22 +14,7 @@ struct OverseaSection : View {
     
     var body: some View {
         Section {
-            HStack() {
-                
-                Text("品牌制造商")
-                .font(.title)
-                    .padding(.trailing, 10)
-                
-                Text("工厂直达消费者，剔除品牌溢价")
-                .color(Color.gray)
-                .font(.caption)
-                    .padding(.top, 14)
-                
-                Spacer()
-                
-                PresentButton(title: "更多制造商 >", url: "https://news.163.com", font: .systemFont(ofSize: 14), color: .gray)
-                    .padding(.top, 10)
-            }.frame(height: 60)
+            SectionHeader(title:"品牌制造商", desc: "工厂直达消费者，剔除品牌溢价", more: "更多制造商", detailURL: "https://you.163.com/manufacturer/list?_stat_area=manufacturer_link&_stat_referer=yanxuanhd")
             
             if self.userData.list.count == 4 {
                 

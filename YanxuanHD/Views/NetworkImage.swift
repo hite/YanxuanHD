@@ -17,6 +17,7 @@ struct NetworkImage : View {
                 Image(systemName: "slowmo")
             } else {
                 Image(uiImage: self.userData.imgData!)
+                .cornerRadius(4)
             }
         }
     }

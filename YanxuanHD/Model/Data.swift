@@ -33,3 +33,35 @@ func load<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> T {
     }
 }
 
+func jsonToData(jsonDic:Dictionary<String, Any>) -> Data? {
+    
+    if (!JSONSerialization.isValidJSONObject(jsonDic)) {
+        
+        print("is not a valid json object")
+        
+        return nil
+        
+    }
+    
+    //利用自带的json库转换成Data
+    
+    //如果设置options为JSONSerialization.WritingOptions.prettyPrinted，则打印格式更好阅读
+    
+    let data = try? JSONSerialization.data(withJSONObject: jsonDic, options: [])
+    
+    return data
+    
+}
+
+
+func formatProductPrice(_ price: CGFloat, fix: Int = 0) -> String {
+    
+    let pricetxt = String(format: "%.\(fix)f", price)
+    return pricetxt
+}
+
+func showModal(_ url: String) {
+    NotificationCenter.default.post(name: .presentModalWindow, object: url)
+}
+
+

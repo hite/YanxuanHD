@@ -22,6 +22,11 @@
 		4867189C22C9A8C3004FB5BC /* PresentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4867189B22C9A8C3004FB5BC /* PresentButton.swift */; };
 		4867189E22C9B64A004FB5BC /* OverseaProductShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4867189D22C9B64A004FB5BC /* OverseaProductShow.swift */; };
 		486718A122C9E55F004FB5BC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486718A022C9E55F004FB5BC /* Networking.swift */; };
+		486718A322C9F204004FB5BC /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486718A222C9F204004FB5BC /* SectionHeader.swift */; };
+		486718A622C9F436004FB5BC /* NewArrivalSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486718A522C9F436004FB5BC /* NewArrivalSection.swift */; };
+		486718A822C9FA6A004FB5BC /* NewArrivalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486718A722C9FA6A004FB5BC /* NewArrivalModel.swift */; };
+		486718AA22C9FD10004FB5BC /* NewArrivalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486718A922C9FD10004FB5BC /* NewArrivalData.swift */; };
+		486718AC22C9FF51004FB5BC /* NewArrivalProductShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486718AB22C9FF51004FB5BC /* NewArrivalProductShow.swift */; };
 		487834FD22B9D8B0004A8421 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487834FC22B9D8B0004A8421 /* AppDelegate.swift */; };
 		487834FF22B9D8B0004A8421 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487834FE22B9D8B0004A8421 /* SceneDelegate.swift */; };
 		4878350122B9D8B0004A8421 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4878350022B9D8B0004A8421 /* ContentView.swift */; };
@@ -60,6 +65,11 @@
 		4867189B22C9A8C3004FB5BC /* PresentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentButton.swift; sourceTree = "<group>"; };
 		4867189D22C9B64A004FB5BC /* OverseaProductShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverseaProductShow.swift; sourceTree = "<group>"; };
 		486718A022C9E55F004FB5BC /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		486718A222C9F204004FB5BC /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		486718A522C9F436004FB5BC /* NewArrivalSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewArrivalSection.swift; sourceTree = "<group>"; };
+		486718A722C9FA6A004FB5BC /* NewArrivalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewArrivalModel.swift; sourceTree = "<group>"; };
+		486718A922C9FD10004FB5BC /* NewArrivalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewArrivalData.swift; sourceTree = "<group>"; };
+		486718AB22C9FF51004FB5BC /* NewArrivalProductShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewArrivalProductShow.swift; sourceTree = "<group>"; };
 		487834F922B9D8B0004A8421 /* YanxuanHD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YanxuanHD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		487834FC22B9D8B0004A8421 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		487834FE22B9D8B0004A8421 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +114,7 @@
 				4867189722C7CB51004FB5BC /* NetworkImage.swift */,
 				4867189922C7CB6D004FB5BC /* NetworkImageData.swift */,
 				4867189B22C9A8C3004FB5BC /* PresentButton.swift */,
+				486718A222C9F204004FB5BC /* SectionHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -137,6 +148,17 @@
 				48A0450222BC893800748BB5 /* BannerData.swift */,
 			);
 			path = FeatureBanner;
+			sourceTree = "<group>";
+		};
+		486718A422C9F400004FB5BC /* NewArrival */ = {
+			isa = PBXGroup;
+			children = (
+				486718A522C9F436004FB5BC /* NewArrivalSection.swift */,
+				486718AB22C9FF51004FB5BC /* NewArrivalProductShow.swift */,
+				486718A722C9FA6A004FB5BC /* NewArrivalModel.swift */,
+				486718A922C9FD10004FB5BC /* NewArrivalData.swift */,
+			);
+			path = NewArrival;
 			sourceTree = "<group>";
 		};
 		487834F022B9D8B0004A8421 = {
@@ -217,11 +239,12 @@
 		48FE22C722BB360A00DB64B0 /* ChildrenView */ = {
 			isa = PBXGroup;
 			children = (
+				486718A422C9F400004FB5BC /* NewArrival */,
+				48663E5922C76E03005F58FF /* OverseaSection */,
+				4867189F22C9E291004FB5BC /* FeatureBanner */,
 				4878351022B9DC88004A8421 /* ChildrenContent.swift */,
 				485504E322BB75DA0064D222 /* FeatureTab.swift */,
 				48A0450622BCBC8E00748BB5 /* CategorySegment.swift */,
-				48663E5922C76E03005F58FF /* OverseaSection */,
-				4867189F22C9E291004FB5BC /* FeatureBanner */,
 			);
 			path = ChildrenView;
 			sourceTree = "<group>";
@@ -305,19 +328,23 @@
 				4881B88F22C07C1D00B26D0F /* BannerScrollView.swift in Sources */,
 				480842F822C5F21200A31ACB /* Loading.swift in Sources */,
 				48663E5422C71E77005F58FF /* WebViewController.swift in Sources */,
+				486718AA22C9FD10004FB5BC /* NewArrivalData.swift in Sources */,
 				4878351F22BA5449004A8421 /* Data.swift in Sources */,
 				4858F3F422C4EFD100E753E5 /* ActiveTabData.swift in Sources */,
 				487834FD22B9D8B0004A8421 /* AppDelegate.swift in Sources */,
 				48663E5D22C76F14005F58FF /* OverseaData.swift in Sources */,
 				4867189E22C9B64A004FB5BC /* OverseaProductShow.swift in Sources */,
 				4878351622BA0865004A8421 /* ProfileView.swift in Sources */,
+				486718A822C9FA6A004FB5BC /* NewArrivalModel.swift in Sources */,
 				4878351A22BA2F23004A8421 /* SidebarMenu.swift in Sources */,
+				486718A322C9F204004FB5BC /* SectionHeader.swift in Sources */,
 				4867189822C7CB51004FB5BC /* NetworkImage.swift in Sources */,
 				4878351322B9E746004A8421 /* BackgroundColor.swift in Sources */,
 				4878351D22BA5384004A8421 /* SidebarMenuData.swift in Sources */,
 				487834FF22B9D8B0004A8421 /* SceneDelegate.swift in Sources */,
 				48A0450322BC893800748BB5 /* BannerData.swift in Sources */,
 				4867189A22C7CB6D004FB5BC /* NetworkImageData.swift in Sources */,
+				486718A622C9F436004FB5BC /* NewArrivalSection.swift in Sources */,
 				485504E222BB5DD50064D222 /* BannerImageModel.swift in Sources */,
 				4878351822BA16B0004A8421 /* Sidebar.swift in Sources */,
 				48663E5F22C77061005F58FF /* OverseaModel.swift in Sources */,
@@ -326,6 +353,7 @@
 				48ECBA4922C5B8D8005C7323 /* WebView.swift in Sources */,
 				48663E5B22C76E38005F58FF /* OverseaSection.swift in Sources */,
 				4867189C22C9A8C3004FB5BC /* PresentButton.swift in Sources */,
+				486718AC22C9FF51004FB5BC /* NewArrivalProductShow.swift in Sources */,
 				4878350122B9D8B0004A8421 /* ContentView.swift in Sources */,
 				48A0450522BCB22200748BB5 /* BannerImageData.swift in Sources */,
 				486718A122C9E55F004FB5BC /* Networking.swift in Sources */,

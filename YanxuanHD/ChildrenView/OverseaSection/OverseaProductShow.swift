@@ -36,20 +36,15 @@ struct OverseaProductShow : View {
                 Divider()
                     .frame(width: 100)
                 
-                Text(self.formatPrice(product.floorPrice))
+                Text("\(formatProductPrice(product.floorPrice, fix: 2))元起")
                     .font(Font.system(size: 14 * zoom))
                     .color(.gray)
             }
                 .offset(x: offsetX, y: offsetY)
             }
             .tapAction {
-                NotificationCenter.default.post(name: .presentModalWindow, object: "https://you.163.com/item/manufacturer?tagId=\(self.product.id)")
+                showModal("https://you.163.com/item/manufacturer?tagId=\(self.product.id)")
             }
     }
-    
-    func formatPrice(_ price: CGFloat) -> String {
-        
-        let pricetxt = String(format: "%.2f", price)
-        return "\(pricetxt)元起"
-    }
+
 }
