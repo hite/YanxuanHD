@@ -20,9 +20,9 @@ final class OverseaData: BindableObject {
     }
     
     init() {
-        var list: [OverseaModel] = []
         
         Networking.fetch(.oversea) { (r) in
+            var list: [OverseaModel] = []
             if let items = r as? [Dictionary<String, Any>]{
                 for item in items {
                     list.append(OverseaModel(from: item))

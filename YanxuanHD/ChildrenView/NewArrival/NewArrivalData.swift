@@ -20,9 +20,9 @@ final class NewArrivalData: BindableObject {
     }
     
     init() {
-        var list: [NewArrivalModel] = []
         
         Networking.fetch(.newarrival) { (r) in
+            var list: [NewArrivalModel] = []
             if let items = r as? [Dictionary<String, Any>]{
                 for item in items {
                     
@@ -41,12 +41,6 @@ final class NewArrivalData: BindableObject {
                         fatalError("Couldn't parse \(item) as \(NewArrivalModel.self):\n\(err)")
                     }
                     
-                    
-//                    var model = NewArrivalModel(from: item)
-//                    let imageUrl = model.scenePicUrl + "?imageView&quality=95&thumbnail=265x265"
-//                    model.scenePicUrl = imageUrl
-//                    list.append(model)
-//                    print(item)
                 }
                 
                 self.list = list

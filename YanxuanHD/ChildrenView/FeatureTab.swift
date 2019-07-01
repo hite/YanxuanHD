@@ -56,9 +56,11 @@ struct FeatureTab : View {
                         }
                         .frame(height: 160)
                     
-                    OverseaSection(userData: OverseaData())
+//                    OverseaSection(userData: OverseaData())
                     
-                    NewArrivalSection(userData: NewArrivalData())
+//                    NewArrivalSection(userData: NewArrivalData())
+                    
+                    FlashSaleSection(userData: FlashSaleData())
                 }
                 .listStyle(.plain)
                 .listRowInsets(EdgeInsets())

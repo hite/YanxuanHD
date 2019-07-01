@@ -16,6 +16,8 @@ struct NewArrivalProductShow : View {
         VStack {
             ZStack {
                 NetworkImage(userData: NetworkImageData(model.primaryPicUrl))
+                .background(Color(red: 0xf4/0xff, green: 0xf4/0xff, blue: 0xf4/0xff))
+                
                 if self.cornerLabel(model) != nil {
                     Text(self.cornerLabel(model)!)
                     .font(.caption)
