@@ -125,6 +125,17 @@
 			path = OverseaSection;
 			sourceTree = "<group>";
 		};
+		4867189F22C9E291004FB5BC /* FeatureBanner */ = {
+			isa = PBXGroup;
+			children = (
+				4881B88E22C07C1D00B26D0F /* BannerScrollView.swift */,
+				485504E122BB5DD50064D222 /* BannerImage.swift */,
+				48A0450422BCB22200748BB5 /* BannerImageData.swift */,
+				48A0450222BC893800748BB5 /* BannerData.swift */,
+			);
+			path = FeatureBanner;
+			sourceTree = "<group>";
+		};
 		487834F022B9D8B0004A8421 = {
 			isa = PBXGroup;
 			children = (
@@ -203,14 +214,11 @@
 		48FE22C722BB360A00DB64B0 /* ChildrenView */ = {
 			isa = PBXGroup;
 			children = (
-				48663E5922C76E03005F58FF /* OverseaSection */,
 				4878351022B9DC88004A8421 /* ChildrenContent.swift */,
-				4881B88E22C07C1D00B26D0F /* BannerScrollView.swift */,
-				485504E122BB5DD50064D222 /* BannerImage.swift */,
-				48A0450422BCB22200748BB5 /* BannerImageData.swift */,
-				48A0450222BC893800748BB5 /* BannerData.swift */,
 				485504E322BB75DA0064D222 /* FeatureTab.swift */,
 				48A0450622BCBC8E00748BB5 /* CategorySegment.swift */,
+				48663E5922C76E03005F58FF /* OverseaSection */,
+				4867189F22C9E291004FB5BC /* FeatureBanner */,
 			);
 			path = ChildrenView;
 			sourceTree = "<group>";
