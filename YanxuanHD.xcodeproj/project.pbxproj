@@ -19,6 +19,8 @@
 		48663E5F22C77061005F58FF /* OverseaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48663E5E22C77061005F58FF /* OverseaModel.swift */; };
 		4867189822C7CB51004FB5BC /* NetworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4867189722C7CB51004FB5BC /* NetworkImage.swift */; };
 		4867189A22C7CB6D004FB5BC /* NetworkImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4867189922C7CB6D004FB5BC /* NetworkImageData.swift */; };
+		4867189C22C9A8C3004FB5BC /* PresentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4867189B22C9A8C3004FB5BC /* PresentButton.swift */; };
+		4867189E22C9B64A004FB5BC /* OverseaProductShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4867189D22C9B64A004FB5BC /* OverseaProductShow.swift */; };
 		487834FD22B9D8B0004A8421 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487834FC22B9D8B0004A8421 /* AppDelegate.swift */; };
 		487834FF22B9D8B0004A8421 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487834FE22B9D8B0004A8421 /* SceneDelegate.swift */; };
 		4878350122B9D8B0004A8421 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4878350022B9D8B0004A8421 /* ContentView.swift */; };
@@ -54,6 +56,8 @@
 		48663E5E22C77061005F58FF /* OverseaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverseaModel.swift; sourceTree = "<group>"; };
 		4867189722C7CB51004FB5BC /* NetworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImage.swift; sourceTree = "<group>"; };
 		4867189922C7CB6D004FB5BC /* NetworkImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImageData.swift; sourceTree = "<group>"; };
+		4867189B22C9A8C3004FB5BC /* PresentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentButton.swift; sourceTree = "<group>"; };
+		4867189D22C9B64A004FB5BC /* OverseaProductShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverseaProductShow.swift; sourceTree = "<group>"; };
 		487834F922B9D8B0004A8421 /* YanxuanHD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YanxuanHD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		487834FC22B9D8B0004A8421 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		487834FE22B9D8B0004A8421 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 				480842F722C5F21200A31ACB /* Loading.swift */,
 				4867189722C7CB51004FB5BC /* NetworkImage.swift */,
 				4867189922C7CB6D004FB5BC /* NetworkImageData.swift */,
+				4867189B22C9A8C3004FB5BC /* PresentButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -113,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				48663E5A22C76E38005F58FF /* OverseaSection.swift */,
+				4867189D22C9B64A004FB5BC /* OverseaProductShow.swift */,
 				48663E5C22C76F14005F58FF /* OverseaData.swift */,
 				48663E5E22C77061005F58FF /* OverseaModel.swift */,
 			);
@@ -292,6 +298,7 @@
 				4858F3F422C4EFD100E753E5 /* ActiveTabData.swift in Sources */,
 				487834FD22B9D8B0004A8421 /* AppDelegate.swift in Sources */,
 				48663E5D22C76F14005F58FF /* OverseaData.swift in Sources */,
+				4867189E22C9B64A004FB5BC /* OverseaProductShow.swift in Sources */,
 				4878351622BA0865004A8421 /* ProfileView.swift in Sources */,
 				4878351A22BA2F23004A8421 /* SidebarMenu.swift in Sources */,
 				4867189822C7CB51004FB5BC /* NetworkImage.swift in Sources */,
@@ -307,6 +314,7 @@
 				48A0450722BCBC8E00748BB5 /* CategorySegment.swift in Sources */,
 				48ECBA4922C5B8D8005C7323 /* WebView.swift in Sources */,
 				48663E5B22C76E38005F58FF /* OverseaSection.swift in Sources */,
+				4867189C22C9A8C3004FB5BC /* PresentButton.swift in Sources */,
 				4878350122B9D8B0004A8421 /* ContentView.swift in Sources */,
 				48A0450522BCB22200748BB5 /* BannerImageData.swift in Sources */,
 			);

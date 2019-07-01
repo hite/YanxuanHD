@@ -14,7 +14,7 @@ struct OverseaSection : View {
     
     var body: some View {
         Section {
-            HStack(alignment: .firstTextBaseline, spacing: 0) {
+            HStack() {
                 
                 Text("品牌制造商")
                 .font(.title)
@@ -23,22 +23,27 @@ struct OverseaSection : View {
                 Text("工厂直达消费者，剔除品牌溢价")
                 .color(Color.gray)
                 .font(.caption)
+                    .padding(.top, 14)
                 
                 Spacer()
                 
-                NavigationButton(destination: Text("clicked"), isDetail: true, onTrigger: { () -> Bool in
-                    print("What? destination")
-                    return true
-                }) {
-                    Text("更多制造商")
-                }
+                PresentButton(title: "更多制造商 >", url: "https://news.163.com", font: .systemFont(ofSize: 14), color: .gray)
+                    .padding(.top, 10)
             }.frame(height: 60)
             
-            HStack {
-                ForEach(self.userData.list) { model in
-//                    Text(model.name)
-                    NetworkImage(userData: NetworkImageData(model.picUrl))
-                }
+            if self.userData.list.count == 4 {
+                
+                ScrollView(showsHorizontalIndicator: false) {
+                    
+                    HStack {
+                        OverseaProductShow(product: self.userData.list[0], offsetX: 0, offsetY: -60)
+                        OverseaProductShow(product: self.userData.list[1], offsetX: 0, offsetY: -60)
+                        VStack {
+                            OverseaProductShow(product: self.userData.list[2], offsetX: -70, offsetY: 0, zoom: 0.6)
+                            OverseaProductShow(product: self.userData.list[3], offsetX: -70, offsetY: 0, zoom: 0.6)
+                        }
+                    }
+                }.frame(height: 320)
             }
         }
     }

@@ -12,6 +12,8 @@ import UIKit
 extension Notification.Name {
     static let webViewDataRequest = Notification.Name("webViewDataRequest")
     static let webViewDataResponse = Notification.Name("webViewDataResponse")
+    
+    static let presentModalWindow = Notification.Name("presentModalWindow")
 }
 
 @UIApplicationMain
@@ -20,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
+        UITableView.appearance().separatorColor = UIColor.clear
         return true
     }
 

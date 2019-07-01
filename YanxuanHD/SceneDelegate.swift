@@ -24,20 +24,40 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller
         let window = UIWindow(frame: UIScreen.main.bounds)
         let vc = WebViewController() {
-//            self.networking
-            
+
             let window = UIWindow(frame: UIScreen.main.bounds)
             let vc = UIHostingController(rootView: ContentView())
             window.rootViewController = vc
             self.window = window
             window.makeKeyAndVisible()
-            
         }
+        
         vc.url = "https://you.163.com"
         window.rootViewController = vc
         //        window.isHidden = false
         self.networking = window
         window.makeKeyAndVisible()
+        
+        NotificationCenter.default.addObserver(forName: .presentModalWindow, object: nil, queue: nil) { (notif) in
+            if let url = notif.object as? String {
+                DispatchQueue.main.async {
+                    self.presentURL(url)
+                }
+            }
+        }
+//            .post(name: .presentModalWindow, object: "https://you.163.com/item/manufacturer?tagId=\(self.product.id)")
+    }
+    
+    func presentURL(_ url: String){
+        let vc = UIHostingController(rootView: WebView(urlString: url))
+        print("Go to url \(url)")
+        
+        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
+            print("fail get root viewController")
+            return
+        }
+        
+        rootViewController.present(vc, animated: true, completion: nil)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
