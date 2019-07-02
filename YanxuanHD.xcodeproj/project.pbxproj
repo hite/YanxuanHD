@@ -12,6 +12,10 @@
 		485504E422BB75DA0064D222 /* FeatureTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485504E322BB75DA0064D222 /* FeatureTab.swift */; };
 		4858F3F422C4EFD100E753E5 /* ActiveTabData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858F3F322C4EFD100E753E5 /* ActiveTabData.swift */; };
 		48641A2F22CB0AD0009E0002 /* FlashSaleProductShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48641A2E22CB0AD0009E0002 /* FlashSaleProductShow.swift */; };
+		48641A3222CB4734009E0002 /* FulisheSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48641A3122CB4734009E0002 /* FulisheSection.swift */; };
+		48641A3422CB481F009E0002 /* FulisheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48641A3322CB481F009E0002 /* FulisheModel.swift */; };
+		48641A3622CB4B98009E0002 /* FulisheData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48641A3522CB4B98009E0002 /* FulisheData.swift */; };
+		48641A3822CB4F36009E0002 /* FulisheProductShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48641A3722CB4F36009E0002 /* FulisheProductShow.swift */; };
 		48663E5422C71E77005F58FF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48663E5322C71E77005F58FF /* WebViewController.swift */; };
 		48663E5622C7200D005F58FF /* apphost.js in Resources */ = {isa = PBXBuildFile; fileRef = 48663E5522C7200D005F58FF /* apphost.js */; };
 		48663E5822C758DD005F58FF /* fetch.js in Resources */ = {isa = PBXBuildFile; fileRef = 48663E5722C758DD005F58FF /* fetch.js */; };
@@ -61,6 +65,10 @@
 		485504E322BB75DA0064D222 /* FeatureTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureTab.swift; sourceTree = "<group>"; };
 		4858F3F322C4EFD100E753E5 /* ActiveTabData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTabData.swift; sourceTree = "<group>"; };
 		48641A2E22CB0AD0009E0002 /* FlashSaleProductShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashSaleProductShow.swift; sourceTree = "<group>"; };
+		48641A3122CB4734009E0002 /* FulisheSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulisheSection.swift; sourceTree = "<group>"; };
+		48641A3322CB481F009E0002 /* FulisheModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulisheModel.swift; sourceTree = "<group>"; };
+		48641A3522CB4B98009E0002 /* FulisheData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulisheData.swift; sourceTree = "<group>"; };
+		48641A3722CB4F36009E0002 /* FulisheProductShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulisheProductShow.swift; sourceTree = "<group>"; };
 		48663E5322C71E77005F58FF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		48663E5522C7200D005F58FF /* apphost.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = apphost.js; sourceTree = "<group>"; };
 		48663E5722C758DD005F58FF /* fetch.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = fetch.js; sourceTree = "<group>"; };
@@ -129,6 +137,17 @@
 				486718A222C9F204004FB5BC /* SectionHeader.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		48641A3022CB46EB009E0002 /* Fulishe */ = {
+			isa = PBXGroup;
+			children = (
+				48641A3122CB4734009E0002 /* FulisheSection.swift */,
+				48641A3722CB4F36009E0002 /* FulisheProductShow.swift */,
+				48641A3322CB481F009E0002 /* FulisheModel.swift */,
+				48641A3522CB4B98009E0002 /* FulisheData.swift */,
+			);
+			path = Fulishe;
 			sourceTree = "<group>";
 		};
 		48663E5222C71E4F005F58FF /* Networking */ = {
@@ -264,6 +283,7 @@
 		48FE22C722BB360A00DB64B0 /* ChildrenView */ = {
 			isa = PBXGroup;
 			children = (
+				48641A3022CB46EB009E0002 /* Fulishe */,
 				486718AD22CA2B50004FB5BC /* FlashSale */,
 				486718A422C9F400004FB5BC /* NewArrival */,
 				48663E5922C76E03005F58FF /* OverseaSection */,
@@ -377,17 +397,21 @@
 				486718A622C9F436004FB5BC /* NewArrivalSection.swift in Sources */,
 				485504E222BB5DD50064D222 /* BannerImageModel.swift in Sources */,
 				486718B122CA2C1D004FB5BC /* FlashSaleModel.swift in Sources */,
+				48641A3422CB481F009E0002 /* FulisheModel.swift in Sources */,
 				4878351822BA16B0004A8421 /* Sidebar.swift in Sources */,
+				48641A3222CB4734009E0002 /* FulisheSection.swift in Sources */,
 				48663E5F22C77061005F58FF /* OverseaModel.swift in Sources */,
 				485504E422BB75DA0064D222 /* FeatureTab.swift in Sources */,
 				48A0450722BCBC8E00748BB5 /* CategorySegment.swift in Sources */,
 				48ECBA4922C5B8D8005C7323 /* WebView.swift in Sources */,
 				48663E5B22C76E38005F58FF /* OverseaSection.swift in Sources */,
+				48641A3822CB4F36009E0002 /* FulisheProductShow.swift in Sources */,
 				4867189C22C9A8C3004FB5BC /* PresentButton.swift in Sources */,
 				486718AC22C9FF51004FB5BC /* NewArrivalProductShow.swift in Sources */,
 				4878350122B9D8B0004A8421 /* ContentView.swift in Sources */,
 				48A0450522BCB22200748BB5 /* BannerImageData.swift in Sources */,
 				486718A122C9E55F004FB5BC /* Networking.swift in Sources */,
+				48641A3622CB4B98009E0002 /* FulisheData.swift in Sources */,
 				486718AF22CA2B76004FB5BC /* FlashSaleSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -28,6 +28,11 @@ final class BannerImageData: BindableObject {
     }
     
     func downloadImage() -> Void {
+        if self.imgData != nil {
+            //
+            print("Skip download image")
+            return
+        }
         guard let url = URL(string: self.imageModel.imageURL) else {
             return
         }

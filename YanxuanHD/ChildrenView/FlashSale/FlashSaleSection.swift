@@ -29,6 +29,8 @@ struct FlashSaleSection : View {
                                     }
                                 }
                             }
+                        } else {
+                            Text("数据格式错误，返回了个数是奇数")
                         }
                     }
                 }.frame(height: 400)

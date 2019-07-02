@@ -135,12 +135,14 @@ struct BannerScrollView : UIViewRepresentable{
                 // https://icodesign.me/posts/swift-combine/
                 if let imageData = bannerData.imgData {
                     updateImage(index, imageData)
-                }
-                let _ = bannerData.didChange.sink { (bannerData) in
-                    //
-                    print("received value: \(bannerData)")
-                    if let imageData = bannerData.imgData {
-                        updateImage(index, imageData)
+                } else {
+    
+                    let _ = bannerData.didChange.sink { (bannerData) in
+                        //
+                        print("received value: \(bannerData)")
+                        if let imageData = bannerData.imgData {
+                            updateImage(index, imageData)
+                        }
                     }
                 }
             }

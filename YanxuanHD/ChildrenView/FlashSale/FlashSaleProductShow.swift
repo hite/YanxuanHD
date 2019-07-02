@@ -65,7 +65,7 @@ struct FlashSaleProductShow : View {
                     .font(.title)
                     .color(kBrandColor)
                     
-                    Text("￥\(formatProductPrice(model.actualPrice))")
+                    Text("￥\(formatProductPrice(model.retailPrice))")
                         .font(.body)
                         .color(lightGray)
                         .strikethrough()

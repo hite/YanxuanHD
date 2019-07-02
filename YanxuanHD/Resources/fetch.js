@@ -12,14 +12,24 @@ window.appHost.fetch = function(action) {
     } else if (action == 'flashsale'){
         ret = JSON_DATA['indexFlashSaleVO']
     } else if (action == 'fulishe'){
-        var modules = JSON_DATA['saleIndexVO']['indexModuleVO']
+        var saleIndexVO = JSON_DATA['saleIndexVO']
+        var fulishe = {};
+        
+        var banners = saleIndexVO['bannerList']
+        if (banners && banners.length > 0) {
+            fulishe.banner = banners[0]
+        }
+        
+        var modules = saleIndexVO['indexModuleVO']
         for(var i = 0; i < modules.length; i++){
             var module = modules[i]
             if (module.type == 2) {
-                ret = module.itemList
+                fulishe.itemList = module.itemList
                 break;
             }
         }
+        
+        ret = fulishe
     }
     
     window.appHost.invoke(action, ret);
