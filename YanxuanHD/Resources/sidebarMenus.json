@@ -1,22 +1,25 @@
 [
     {
         "id": 1001,
-        "title": "推荐",
+        "title": "首页",
         "childViewName": "homeView",
         "imageName": "sidebar-home",
+        "url": "",
         "isSpacer": false, "isActive": false
     },
     {
         "id": 1002,
-        "title": "分类",
+        "title": "热销",
         "childViewName": "homeView",
         "imageName": "sidebar-list",
+        "url": "https://you.163.com/item/recommend?_stat_area=pop_more&_stat_referer=index",
         "isSpacer": false, "isActive": false
     },
     {
         "id": 3,
-        "title": "发现",
+        "title": "编辑推荐",
         "childViewName": "homeView",
+        "url": "https://you.163.com/topic/index?_stat_area=nav_10&_stat_referer=index",
         "imageName": "sidebar-other",
         "isSpacer": false, "isActive": false
     },
@@ -24,6 +27,7 @@
         "id": 5,
         "title": "购物车",
         "childViewName": "homeView",
+        "url": "https://you.163.com/cart",
         "imageName": "sidebar-cart",
         "isSpacer": false, "isActive": false
     },
@@ -31,6 +35,7 @@
         "id": 4,
         "title": "我",
         "childViewName": "homeView",
+        "url": "https://you.163.com/user/index",
         "imageName": "sidebar-me",
         "isSpacer": false, "isActive": false
     },
@@ -38,21 +43,16 @@
         "id": 100,
         "title": "占位符",
         "childViewName": "",
+        "url": "",
         "imageName": "space1",
         "isSpacer": true,"isActive": false
     },
     {
         "id": 6,
         "title": "搜索",
+        "url": "https://m.you.163.com/search",
         "childViewName": "homeView",
         "imageName": "sidebar-search",
-        "isSpacer": false, "isActive": false
-    },
-    {
-        "id": 8,
-        "title": "设置",
-        "childViewName": "homeView",
-        "imageName": "sidebar-settings",
         "isSpacer": false, "isActive": false
     }
 ]

@@ -9,4 +9,5 @@ var styleSheet = styleEl.sheet;
 styleSheet.insertRule('#j-YXComponentTop{display:none!important}', styleSheet.cssRules.length);
 styleSheet.insertRule('#j-yx-fixedtoolDownloadlink{display:none!important}', styleSheet.cssRules.length);
 styleSheet.insertRule('.m-appDownloadGuide{display:none!important}', styleSheet.cssRules.length);
+styleSheet.insertRule('.m-downloadBanner .g-row{display:none!important}', styleSheet.cssRules.length);
 

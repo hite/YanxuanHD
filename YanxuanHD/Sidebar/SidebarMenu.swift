@@ -47,7 +47,7 @@ struct SidebarMenu : View {
 
 #if DEBUG
 struct SidebarMenu_Previews : PreviewProvider {
-    static let item = SidebarMenuItem(id: 9862, title: "搜索", imageName: "sidebar-search", isSpacer: false, childViewName: "")
+    static let item = SidebarMenuItem(id: 9862, title: "搜索", imageName: "sidebar-search", isSpacer: false, childViewName: "", url: "")
     static var previews: some View {
         SidebarMenu(smaller: false, model: item, activeData: ActiveTabData(), isSelected: true)
     }

@@ -21,5 +21,7 @@ struct SidebarMenuItem: Hashable, Codable, Identifiable {
     
     var childViewName: String
     
+    var url: String
+    
 }
 

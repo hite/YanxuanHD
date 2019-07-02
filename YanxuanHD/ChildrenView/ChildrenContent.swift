@@ -12,12 +12,17 @@ import SwiftUI
 struct ChildrenContent : View {
     @EnvironmentObject var activeTabData: ActiveTabData
 
+    let bannerImageHeight: Length = 150
+    // bannerData 数据源放在 list 外面避免被内部缓存丢弃后的重绘
     var body: some View {
         VStack {
             if self.activeTabData.activeMenuItem.id == 1001 {
-                FeatureTab()
-            } else {
-                Text("正品保障 \(self.activeTabData.activeMenuItem.title)")
+                GeometryReader { geo in
+                    FeatureTab(singleWidth: geo.size.width, singleHeight: self.bannerImageHeight, bannerData: BannerData("", width: geo.size.width, height: self.bannerImageHeight))
+                }
+                
+            } else if(self.activeTabData.activeMenuItem.url.count > 0 ){
+                WebView(urlString: self.activeTabData.activeMenuItem.url)
             }
         }
     }

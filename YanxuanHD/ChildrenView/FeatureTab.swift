@@ -44,16 +44,20 @@ let kSegmentDataSource: [CategorySegmentModel] = [
 struct FeatureTab : View {
     @State var currentSegmentModel: CategorySegmentModel = kSegmentDataSource[0]
     
-    let singleHeight:CGFloat = 150
+    @State var singleWidth: CGFloat
+    
+    var singleHeight: CGFloat
+    
+    @State var bannerData: BannerData
+
     var body: some View {
         VStack() {
             CategorySegment(currentModel: $currentSegmentModel)
             
-            if "FeatureTab" == currentSegmentModel.destinationViewName  {
+            if "FeatureTab" == currentSegmentModel.destinationViewName {
                 List() {
-                    GeometryReader { geo in
-                        BannerScrollView(imageWidth: geo.size.width, imageHeight: self.singleHeight)
-                        }
+                    
+                    BannerScrollView(imageWidth: self.singleWidth, imageHeight: self.singleHeight, userData: self.bannerData)
                         .frame(height: 160)
                     
                     OverseaSection(userData: OverseaData())
@@ -73,12 +77,12 @@ struct FeatureTab : View {
                         }
                         .font(.caption).padding(.vertical, 2)
                         }.frame(minWidth: 0, maxWidth: .infinity)
-                        .padding(4)
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                         .background(Color(red: 0.25, green: 0.25, blue: 0.25))
                     
                 }
                 .listStyle(.plain)
-                .listRowInsets(EdgeInsets())
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             } else {
                 WebView(urlString: currentSegmentModel.destinationURL)
             }
@@ -92,7 +96,7 @@ struct FeatureTab : View {
 #if DEBUG
 struct FeatureTab_Previews : PreviewProvider {
     static var previews: some View {
-        FeatureTab()
+        FeatureTab(singleWidth: 200, singleHeight: 150, bannerData: BannerData("", width: 200, height: 150))
     }
 }
 #endif

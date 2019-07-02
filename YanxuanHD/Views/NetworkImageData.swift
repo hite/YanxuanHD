@@ -28,6 +28,9 @@ final class NetworkImageData: BindableObject {
     }
     
     func downloadImage() -> Void {
+        if self.imgData != nil {
+            return
+        }
         guard let url = URL(string: self.imageURL) else {
             return
         }
