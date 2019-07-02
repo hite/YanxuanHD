@@ -10,18 +10,32 @@ import SwiftUI
 
 struct RoundInfoView : View {
     var roundInfo: FlashSaleModel
-    
+    let brownColor = Color(red: 0.38, green: 0.33, blue: 0.28)
     var body: some View {
         ZStack {
             NetworkImage(userData: NetworkImageData(roundInfo.backgroundImageUrl))
             VStack {
                 Text("\(self.hourClock(roundInfo.startTime))点场")
                 .font(.title)
-                .color(.gray)
+                .color(brownColor)
 
-                Divider().frame(width: 15)
+                Divider()
+                    .frame(width: 15)
+                .background(brownColor)
 
                 CountDownView(roundInfo.leftTime)
+                .padding(.bottom, 60)
+                
+                Button(action: {
+                    showModal(self.roundInfo.viewAllUrl)
+                }) {
+                    Text("查看全部 > ")
+                    .font(.headline)
+                    .color(Color.white)
+                    .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
+                    .background(Color(red: 0.66, green: 0.58, blue: 0.43))
+                    .cornerRadius(30)
+                }
             }
         }
     }

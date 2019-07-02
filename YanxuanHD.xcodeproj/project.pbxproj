@@ -11,6 +11,7 @@
 		485504E222BB5DD50064D222 /* BannerImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485504E122BB5DD50064D222 /* BannerImageModel.swift */; };
 		485504E422BB75DA0064D222 /* FeatureTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485504E322BB75DA0064D222 /* FeatureTab.swift */; };
 		4858F3F422C4EFD100E753E5 /* ActiveTabData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858F3F322C4EFD100E753E5 /* ActiveTabData.swift */; };
+		48641A2F22CB0AD0009E0002 /* FlashSaleProductShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48641A2E22CB0AD0009E0002 /* FlashSaleProductShow.swift */; };
 		48663E5422C71E77005F58FF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48663E5322C71E77005F58FF /* WebViewController.swift */; };
 		48663E5622C7200D005F58FF /* apphost.js in Resources */ = {isa = PBXBuildFile; fileRef = 48663E5522C7200D005F58FF /* apphost.js */; };
 		48663E5822C758DD005F58FF /* fetch.js in Resources */ = {isa = PBXBuildFile; fileRef = 48663E5722C758DD005F58FF /* fetch.js */; };
@@ -59,6 +60,7 @@
 		485504E122BB5DD50064D222 /* BannerImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerImageModel.swift; sourceTree = "<group>"; };
 		485504E322BB75DA0064D222 /* FeatureTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureTab.swift; sourceTree = "<group>"; };
 		4858F3F322C4EFD100E753E5 /* ActiveTabData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTabData.swift; sourceTree = "<group>"; };
+		48641A2E22CB0AD0009E0002 /* FlashSaleProductShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashSaleProductShow.swift; sourceTree = "<group>"; };
 		48663E5322C71E77005F58FF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		48663E5522C7200D005F58FF /* apphost.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = apphost.js; sourceTree = "<group>"; };
 		48663E5722C758DD005F58FF /* fetch.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = fetch.js; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				486718AE22CA2B76004FB5BC /* FlashSaleSection.swift */,
+				48641A2E22CB0AD0009E0002 /* FlashSaleProductShow.swift */,
 				486718B022CA2C1D004FB5BC /* FlashSaleModel.swift */,
 				486718B222CA2F76004FB5BC /* FlashSaleData.swift */,
 				486718B422CA3681004FB5BC /* RoundInfoView.swift */,
@@ -368,6 +371,7 @@
 				4878351322B9E746004A8421 /* BackgroundColor.swift in Sources */,
 				4878351D22BA5384004A8421 /* SidebarMenuData.swift in Sources */,
 				487834FF22B9D8B0004A8421 /* SceneDelegate.swift in Sources */,
+				48641A2F22CB0AD0009E0002 /* FlashSaleProductShow.swift in Sources */,
 				48A0450322BC893800748BB5 /* BannerData.swift in Sources */,
 				4867189A22C7CB6D004FB5BC /* NetworkImageData.swift in Sources */,
 				486718A622C9F436004FB5BC /* NewArrivalSection.swift in Sources */,

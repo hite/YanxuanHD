@@ -51,15 +51,15 @@ struct FeatureTab : View {
             
             if "FeatureTab" == currentSegmentModel.destinationViewName  {
                 List() {
-                    GeometryReader { geo in
-                        BannerScrollView(imageWidth: geo.size.width, imageHeight: self.singleHeight)
-                        }
-                        .frame(height: 160)
-                    
+//                    GeometryReader { geo in
+//                        BannerScrollView(imageWidth: geo.size.width, imageHeight: self.singleHeight)
+//                        }
+//                        .frame(height: 160)
+//                    
 //                    OverseaSection(userData: OverseaData())
-                    
+//                    
 //                    NewArrivalSection(userData: NewArrivalData())
-                    
+//                    
                     FlashSaleSection(userData: FlashSaleData())
                 }
                 .listStyle(.plain)

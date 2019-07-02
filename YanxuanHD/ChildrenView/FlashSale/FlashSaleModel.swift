@@ -33,6 +33,9 @@ struct FlashSaleItemModel: Identifiable, Codable{
     
     var totalSellVolume: Int
     
+    var detailUrl: String {
+        return "https://you.163.com/item/detail?id=\(itemId)&_stat_area=mod_limit_item_3&_stat_referer=yanxuanhd"
+    }
 }
 
 struct FlashSaleModel: Codable {

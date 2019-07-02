@@ -37,7 +37,7 @@ struct CountDownView : View {
             Text(self.isTimeout ? "本场已结束" : "距离结束还剩")
             .color(brownColor)
             .font(.headline)
-            .bold()
+            .fontWeight(.heavy)
                 .padding(.bottom, 20)
             
             HStack {
@@ -52,7 +52,8 @@ struct CountDownView : View {
                     .color(brownColor)
                 
                 paper(self.second)
-            }
+                
+            }.frame(width: 200)
             }.onReceive(NotificationCenter.default.publisher(for: .countdownTimer)) {
                 self.goneTime += 1
                 
@@ -64,8 +65,8 @@ struct CountDownView : View {
                     self.second = "--"
                 } else {
                     let counter = Int(self.leftover / 1000) - self.goneTime
-                    let hours = Int(counter) / 3600000
-                    let minutes = Int(counter) / 60000 % 60
+                    let hours = Int(counter) / 3600
+                    let minutes = Int(counter) / 60 % 60
                     let seconds = Int(counter) % 60
                     
                     let text = String(format: "%02i:%02i:%02i",hours,minutes,seconds)
