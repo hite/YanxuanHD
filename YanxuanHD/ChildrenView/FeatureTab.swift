@@ -57,7 +57,7 @@ struct FeatureTab : View {
             if "FeatureTab" == currentSegmentModel.destinationViewName {
                 List() {
                     
-                    BannerScrollView(imageWidth: self.singleWidth, imageHeight: self.singleHeight, userData: self.bannerData)
+                    BannerScrollView(imageWidth: self.singleWidth, imageHeight: self.singleHeight)
                         .frame(height: 160)
                     
                     OverseaSection(userData: OverseaData())

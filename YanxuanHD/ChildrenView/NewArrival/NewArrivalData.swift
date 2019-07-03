@@ -35,7 +35,7 @@ final class NewArrivalData: BindableObject {
                             let imageUrl = model.primaryPicUrl + "?imageView&quality=95&thumbnail=265x265"
                             model.primaryPicUrl = imageUrl
                             list.append(model)
-                            print(item)
+//                            print(item)
                         }
                     } catch let err {
                         fatalError("Couldn't parse \(item) as \(NewArrivalModel.self):\n\(err)")

@@ -16,21 +16,19 @@ struct SidebarMenu : View {
 
     let golden = Color.init(red: 1, green: 1, blue: 1, opacity: 0.25)
     var body: some View {
-        Group {
-            VStack {
-                Image(model.imageName)
-                    .scaleEffect(self.smaller ? 1 / 2.0 : 1 / 3.0, anchor: .center)
-                    .padding(self.smaller ? -20: -24)
-                
-                    self.titleView(self.smaller ? 5: 4)
-                }
-            }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        VStack {
+            Image(model.imageName)
+                .scaleEffect(self.smaller ? 1 / 2.0 : 1 / 3.0, anchor: .center)
+                .padding(self.smaller ? -20: -24)
+            
+            self.titleView(self.smaller ? 5: 4)
+            }.frame(minWidth: 0, maxWidth: .infinity)
             .background(self.isSelected ? golden: Color.clear)
             .tapAction {
                 withAnimation {
                     self.activeData.activeMenuItem = self.model
                 }
-            }
+        }
     }
     
     func titleView(_ offset: Double) -> some View {

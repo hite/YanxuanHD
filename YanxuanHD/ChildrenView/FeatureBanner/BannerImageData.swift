@@ -34,6 +34,12 @@ final class BannerImageData: BindableObject {
             return
         }
         guard let url = URL(string: self.imageModel.imageURL) else {
+            print("imageModel.imageURL error")
+            return
+        }
+        
+        if let cacheHit = kMiniCacheForImg[self.imageModel.imageURL] {
+            self.imgData = cacheHit
             return
         }
         
@@ -44,6 +50,9 @@ final class BannerImageData: BindableObject {
                     DispatchQueue.main.async {
                         self.imgData = image
                     }
+                    
+                    //TODO kMiniCacheForImg.removeAll(keepingCapacity: true)
+                    kMiniCacheForImg[self.imageModel.imageURL] = image
                 }
             }
         }

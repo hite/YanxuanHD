@@ -39,17 +39,17 @@ struct BannerScrollView : UIViewRepresentable{
     var imageWidth: CGFloat
     var imageHeight: CGFloat
     
-    @State var userData: BannerData
+//    @State var userData: BannerData
  
     func makeCoordinator() -> Coordinater {
         Coordinater(self)
     }
     
-//    init(imageWidth: CGFloat, imageHeight: CGFloat) {
-//        self.imageWidth = imageWidth
-//        self.imageHeight = imageHeight
-//        print("\(imageWidth) = userData.imageWidth")
-//    }
+    init(imageWidth: CGFloat, imageHeight: CGFloat) {
+        self.imageWidth = imageWidth
+        self.imageHeight = imageHeight
+        print("\(imageWidth) = userData.imageWidth")
+    }
     
     func makeUIView(context: UIViewRepresentableContext<BannerScrollView>) -> UIView {
         
@@ -191,7 +191,7 @@ struct BannerScrollView_Previews : PreviewProvider {
     static let sampe = BannerImageModel.init(id: 1, imageURL: "https://yanxuan.nosdn.127.net/6d83b8e30b1d0a0874dbb068dfc2503a.jpg?imageView&quality=95", destinationURL: "https://act.you.163.com/act/pub/nDFLuzkE7Q.html?_stat_referer=index&_stat_area=banner_5")
     
     static var previews: some View {
-        BannerScrollView(imageWidth: 200, imageHeight: 100, userData: BannerData("", width: 200, height: 100))
+        BannerScrollView(imageWidth: 200, imageHeight: 100)
     }
 }
 #endif

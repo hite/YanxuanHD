@@ -26,7 +26,7 @@ final class OverseaData: BindableObject {
             if let items = r as? [Dictionary<String, Any>]{
                 for item in items {
                     list.append(OverseaModel(from: item))
-                    print(item)
+//                    print(item)
                 }
                 
                 self.list = list

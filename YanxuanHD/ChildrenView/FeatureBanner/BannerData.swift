@@ -40,7 +40,7 @@ final class BannerData: BindableObject {
                     print("Downloading \(imageUrl)")
                     model.imageURL = imageUrl
                     list.append(model)
-                    print(item)
+//                    print(item)
                 }
                 
                 self.bannes = list

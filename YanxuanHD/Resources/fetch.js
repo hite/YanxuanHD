@@ -30,6 +30,13 @@ window.appHost.fetch = function(action) {
         }
         
         ret = fulishe
+    } else if (action == 'userinfo') {
+        ret = {
+            userName : userInfo.nickname,
+            avatar: document.querySelector('.m-userInfo .info .infoWrap .avatar img').src,
+            isMember: userInfo.membershipOn,
+            memberLevel: userInfo.memberLevel
+        }
     }
     
     window.appHost.invoke(action, ret);

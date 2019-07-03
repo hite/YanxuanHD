@@ -12,6 +12,8 @@ import WebKit
 
 struct WebView : UIViewRepresentable {
     var urlString:String?
+    /// 加载完毕后执行的脚本，配合 loadFinish 通知一起工作
+    var loadFinishEvaluated: String?
     static let processPool = WKProcessPool()
     
     func makeCoordinator() -> Coordinater {
@@ -21,8 +23,8 @@ struct WebView : UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<WebView>) -> WKWebView {
         let config = WKWebViewConfiguration()
         let userController = WKUserContentController()
+        
         if let jsURL = Bundle.main.url(forResource: "cssRule", withExtension: ".js") {
-            
             let code = try! String(contentsOf: jsURL, encoding: String.Encoding.utf8)
             let userScript = WKUserScript(source: code, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
             userController.addUserScript(userScript)
@@ -102,6 +104,18 @@ class Coordinater: NSObject, WKNavigationDelegate, WKUIDelegate {
         
         decisionHandler(.allow)
         print("Load url \(String(describing: webView.url?.absoluteString))")
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("webView didFinish")
+        
+        if self.webView.loadFinishEvaluated != nil {
+            self.webViewUIObj?.evaluateJavaScript(self.webView.loadFinishEvaluated!, completionHandler: { (r, err) in
+                if r != nil && err == nil {
+                    NotificationCenter.default.post(name: .webViewLoadFinish, object: r)
+                }
+            })
+        }
     }
     
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {

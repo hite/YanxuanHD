@@ -64,4 +64,7 @@ func showModal(_ url: String) {
     NotificationCenter.default.post(name: .presentModalWindow, object: url)
 }
 
+func showLoginWebViewModal(_ url: String) {
+    NotificationCenter.default.post(name: .presentLoginWebViewWindow, object: url)
+}
 

@@ -45,9 +45,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 }
             }
         }
+        NotificationCenter.default.addObserver(forName: .presentLoginWebViewWindow, object: nil, queue: nil) { (notif) in
+            if let url = notif.object as? String {
+                DispatchQueue.main.async {
+                    self.presentLoginWebView(url)
+                }
+            }
+        }
 //            .post(name: .presentModalWindow, object: "https://you.163.com/item/manufacturer?tagId=\(self.product.id)")
     }
     
+    func presentLoginWebView(_ url: String){
+        //其他页面执行 document.querySelector 出现脚本错误，不会返回
+        let jscode = """
+        var ret = {
+            userName : userInfo.nickname,
+            avatar: document.querySelector('.m-userInfo .info .infoWrap .avatar img').src,
+            isMember: userInfo.membershipOn,
+            memberLevel: userInfo.memberLevel
+        }
+        """
+        let vc = UIHostingController(rootView: WebView(urlString: url, loadFinishEvaluated: jscode))
+        print("Go to url \(url)")
+        
+        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
+            print("fail get root viewController")
+            return
+        }
+        
+        rootViewController.present(vc, animated: true, completion: nil)
+    }
     func presentURL(_ url: String){
         let vc = UIHostingController(rootView: WebView(urlString: url))
         print("Go to url \(url)")

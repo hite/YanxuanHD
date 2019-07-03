@@ -48,7 +48,7 @@ final class FlashSaleData: BindableObject {
                                 let imageUrl = model.primaryPicUrl + "?imageView&quality=95&thumbnail=180x180"
                                 model.primaryPicUrl = imageUrl
                                 list.append(model)
-                                print(item)
+//                                print(item)
                             } else {
                                 print("jsonToData itemlist fails")
                             }

@@ -24,7 +24,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         
         let name = message.name
         if(kAppHostScheme.isEqual(name)){
-                        print("name = \(message.body)")
+//                        print("name = \(message.body)")
             NotificationCenter.default.post(name: .webViewDataResponse, object: message.body)
         }
     }

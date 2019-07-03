@@ -12,8 +12,10 @@ import UIKit
 extension Notification.Name {
     static let webViewDataRequest = Notification.Name("webViewDataRequest")
     static let webViewDataResponse = Notification.Name("webViewDataResponse")
+    static let webViewLoadFinish = Notification.Name("webViewLoadFinish")
     
     static let presentModalWindow = Notification.Name("presentModalWindow")
+    static let presentLoginWebViewWindow = Notification.Name("presentModalWebViewWindow")
 }
 
 @UIApplicationMain

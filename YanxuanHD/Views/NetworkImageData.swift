@@ -10,6 +10,8 @@ import Foundation
 import SwiftUI
 import Combine
 
+var kMiniCacheForImg = [String: UIImage?](minimumCapacity: 100)
+
 final class NetworkImageData: BindableObject {
     let didChange = PassthroughSubject<NetworkImageData, Never>()
     
@@ -28,22 +30,37 @@ final class NetworkImageData: BindableObject {
     }
     
     func downloadImage() -> Void {
+        
         if self.imgData != nil {
             return
         }
-        guard let url = URL(string: self.imageURL) else {
-            return
-        }
-        
-        DispatchQueue.global(qos: .default).async {
-            if let data = try? Data(contentsOf: url) {
-                print("Downloading Image..")
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self.imgData = image
+        if self.imageURL.hasPrefix("http://") || self.imageURL.hasPrefix("https://") {
+            
+            guard let url = URL(string: self.imageURL) else {
+                print("imageURL error")
+                return
+            }
+            
+            if let cacheHit = kMiniCacheForImg[self.imageURL] {
+                self.imgData = cacheHit
+                return
+            }
+            
+            DispatchQueue.global(qos: .default).async {
+                if let data = try? Data(contentsOf: url) {
+                    print("Downloading Image..")
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            self.imgData = image
+                        }
+                        
+                        //TODO kMiniCacheForImg.removeAll(keepingCapacity: true)
+                        kMiniCacheForImg[self.imageURL] = image
                     }
                 }
             }
+        } else {
+            self.imgData = UIImage.init(named: self.imageURL)
         }
         
     }

@@ -50,7 +50,7 @@ final class FulisheData: BindableObject {
                                 let imageUrl = model.showPicUrl + "?imageView&quality=95&thumbnail=130x130"
                                 model.showPicUrl = imageUrl
                                 list.append(model)
-                                print(item)
+//                                print(item)
                             } else {
                                 print("jsonToData itemlist fails")
                             }

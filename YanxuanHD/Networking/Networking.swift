@@ -21,6 +21,8 @@ enum NetworkDataType: String {
     case topsale
     
     case flashsale
+    
+    case userinfo
 }
 
 final class Networking {
