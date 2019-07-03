@@ -41,10 +41,10 @@ final class NetworkImageData: BindableObject {
                 return
             }
             
-            if let cacheHit = kMiniCacheForImg[self.imageURL] {
-                self.imgData = cacheHit
-                return
-            }
+//            if let cacheHit = kMiniCacheForImg[self.imageURL] {
+//                self.imgData = cacheHit
+//                return
+//            }
             
             DispatchQueue.global(qos: .default).async {
                 if let data = try? Data(contentsOf: url) {
@@ -55,7 +55,7 @@ final class NetworkImageData: BindableObject {
                         }
                         
                         //TODO kMiniCacheForImg.removeAll(keepingCapacity: true)
-                        kMiniCacheForImg[self.imageURL] = image
+//                        kMiniCacheForImg[self.imageURL] = image
                     }
                 }
             }

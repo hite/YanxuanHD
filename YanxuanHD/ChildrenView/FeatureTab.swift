@@ -58,7 +58,7 @@ struct FeatureTab : View {
                 List() {
                     
                     BannerScrollView(imageWidth: self.singleWidth, imageHeight: self.singleHeight)
-                        .frame(height: 160)
+                        .frame(width: self.singleWidth, height: 160)
                     
                     OverseaSection(userData: OverseaData())
 

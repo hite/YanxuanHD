@@ -38,10 +38,10 @@ final class BannerImageData: BindableObject {
             return
         }
         
-        if let cacheHit = kMiniCacheForImg[self.imageModel.imageURL] {
-            self.imgData = cacheHit
-            return
-        }
+//        if let cacheHit = kMiniCacheForImg[self.imageModel.imageURL] {
+//            self.imgData = cacheHit
+//            return
+//        }
         
         DispatchQueue.global(qos: .default).async {
             if let data = try? Data(contentsOf: url) {
@@ -52,7 +52,7 @@ final class BannerImageData: BindableObject {
                     }
                     
                     //TODO kMiniCacheForImg.removeAll(keepingCapacity: true)
-                    kMiniCacheForImg[self.imageModel.imageURL] = image
+//                    kMiniCacheForImg[self.imageModel.imageURL] = image
                 }
             }
         }
