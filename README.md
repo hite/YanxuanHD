@@ -1,5 +1,5 @@
 # YanxuanHD
-The iPad version of '网易严选' iOS app, completly written in SwiftUI, and almost has full feature like 网易严选's website.
+The iPad version of '网易严选' iOS app, completly written in SwiftUI, and almost has full features like [网易严选's website](https://you.163.com).
 It is using real data from server to render Views, though is lacked server api to keep login state persistent.
 
 用 SwiftUI 实现的严选 HD，使用真实数据，目前还缺少登陆态保持和搜索功能。
