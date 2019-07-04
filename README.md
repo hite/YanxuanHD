@@ -4,7 +4,7 @@ It is using real data from server to render Views, though is lacked server api t
 
 用 SwiftUI 实现的严选 HD，使用真实数据，目前还缺少登陆态保持和搜索功能。
 
-TODO：
+### TODO：
 Poor performance when list scrolling while the images are downloaded.
 
 多图滚动性能欠佳
