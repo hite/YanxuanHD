@@ -44,11 +44,17 @@ let kSegmentDataSource: [CategorySegmentModel] = [
 struct FeatureTab : View {
     @State var currentSegmentModel: CategorySegmentModel = kSegmentDataSource[0]
     
-    @State var singleWidth: CGFloat
+    var singleWidth: CGFloat
     
     var singleHeight: CGFloat
     
-    @State var bannerData: BannerData
+    var bannerData: BannerData
+    
+    var overSeaData: OverseaData
+    
+    var newArrivalData: NewArrivalData
+    var flashSaleData: FlashSaleData
+    var fulisheData: FulisheData
 
     var body: some View {
         VStack() {
@@ -57,17 +63,17 @@ struct FeatureTab : View {
             if "FeatureTab" == currentSegmentModel.destinationViewName {
                 List() {
                     
-                    BannerScrollView(imageWidth: self.singleWidth, imageHeight: self.singleHeight)
-                        .frame(width: self.singleWidth, height: 160)
+                    BannerScrollView(imageWidth: self.singleWidth, imageHeight: self.singleHeight, banner: self.bannerData)
+                        .frame(width: self.singleWidth, height: self.singleHeight)
                     
-                    OverseaSection(userData: OverseaData())
+                    OverseaSection(userData: self.overSeaData)
 
-                    NewArrivalSection(userData: NewArrivalData())
+                    NewArrivalSection(userData: self.newArrivalData)
 
-                    FlashSaleSection(userData: FlashSaleData())
-                    
-                    FulisheSection(userData: FulisheData())
-                    
+                    FlashSaleSection(userData: self.flashSaleData)
+
+                    FulisheSection(userData: self.fulisheData)
+
                     VStack {
                         Group{
                             Text("妙得ICP证号：ICP 证浙B2-20160106").color(Color.white)
@@ -81,8 +87,7 @@ struct FeatureTab : View {
                         .background(Color(red: 0.25, green: 0.25, blue: 0.25))
                     
                 }
-                .listStyle(.plain)
-                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                .padding(0)
             } else {
                 WebView(urlString: currentSegmentModel.destinationURL)
             }
@@ -96,7 +101,15 @@ struct FeatureTab : View {
 #if DEBUG
 struct FeatureTab_Previews : PreviewProvider {
     static var previews: some View {
-        FeatureTab(singleWidth: 200, singleHeight: 150, bannerData: BannerData("", width: 200, height: 150))
+        FeatureTab(
+            singleWidth: 200,
+            singleHeight: 150,
+            bannerData: BannerData("", width: 200, height: 150),
+            overSeaData: OverseaData(),
+            newArrivalData: NewArrivalData(),
+            flashSaleData: FlashSaleData(),
+            fulisheData: FulisheData()
+        )
     }
 }
 #endif

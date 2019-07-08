@@ -48,7 +48,7 @@ final class NetworkImageData: BindableObject {
             
             DispatchQueue.global(qos: .default).async {
                 if let data = try? Data(contentsOf: url) {
-                    print("Downloading Image..")
+                    print("Downloading Image..\(url)")
                     if let image = UIImage(data: data) {
                         DispatchQueue.main.async {
                             self.imgData = image

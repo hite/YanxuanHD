@@ -35,10 +35,12 @@ final class BannerData: BindableObject {
             if let items = r as? [Dictionary<String, Any>]{
                 for item in items {
                     let model = BannerImageModel(from: item)
-    
-                    let imageUrl = model.imageURL + "?imageView&quality=95&thumbnail=\(Int(imageWidth * 2))x\(Int(imageHeight * 2))"
-                    print("Downloading \(imageUrl)")
-                    model.imageURL = imageUrl
+                    
+                    if !model.imageURL.contains("?") {
+                        let imageUrl = model.imageURL + "?imageView&quality=95&thumbnail=\(Int(imageWidth * 2))x\(Int(imageHeight * 2))"
+                        model.imageURL = imageUrl
+                    }
+                    print("Downloading Banner \(model.imageURL)")
                     list.append(model)
 //                    print(item)
                 }

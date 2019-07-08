@@ -14,11 +14,22 @@ struct ChildrenContent : View {
 
     let bannerImageHeight: Length = 150
     // bannerData 数据源放在 list 外面避免被内部缓存丢弃后的重绘
+    let overSeaData = OverseaData()
+    let newArrivalData = NewArrivalData()
+    let flashSaleData = FlashSaleData()
+    let fulisheData = FulisheData()
     var body: some View {
         VStack {
             if self.activeTabData.activeMenuItem.id == 1001 {
                 GeometryReader { geo in
-                    FeatureTab(singleWidth: geo.size.width, singleHeight: self.bannerImageHeight, bannerData: BannerData("", width: geo.size.width, height: self.bannerImageHeight))
+                    FeatureTab(
+                        singleWidth: geo.size.width,
+                        singleHeight: self.bannerImageHeight,
+                        bannerData: BannerData("", width: geo.size.width - 30 /* 30 是默认边距 */, height: self.bannerImageHeight),
+                        overSeaData: self.overSeaData,
+                        newArrivalData: self.newArrivalData,
+                        flashSaleData: self.flashSaleData,
+                        fulisheData: self.fulisheData                    )
                 }
                 
             } else if(self.activeTabData.activeMenuItem.url.count > 0 ){
