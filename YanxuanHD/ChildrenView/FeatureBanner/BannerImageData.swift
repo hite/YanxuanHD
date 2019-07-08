@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 import Combine
+import Kingfisher
 
 final class BannerImageData: BindableObject {
     let didChange = PassthroughSubject<BannerImageData, Never>()
@@ -38,22 +39,14 @@ final class BannerImageData: BindableObject {
             return
         }
         
-//        if let cacheHit = kMiniCacheForImg[self.imageModel.imageURL] {
-//            self.imgData = cacheHit
-//            return
-//        }
-        
-        DispatchQueue.global(qos: .default).async {
-            if let data = try? Data(contentsOf: url) {
+        KingfisherManager.shared.retrieveImage(with: url) { result in
+            switch result {
+            case .success(let value):
                 print("Downloading Image..\(url)")
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self.imgData = image
-                    }
-                    
-                    //TODO kMiniCacheForImg.removeAll(keepingCapacity: true)
-//                    kMiniCacheForImg[self.imageModel.imageURL] = image
-                }
+                self.imgData = value.image
+            case .failure:
+                print("Downloading Image fails..\(result)")
+
             }
         }
         

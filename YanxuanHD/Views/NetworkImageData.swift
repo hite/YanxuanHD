@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 import Combine
+import Kingfisher
 
 var kMiniCacheForImg = [String: UIImage?](minimumCapacity: 100)
 
@@ -41,22 +42,14 @@ final class NetworkImageData: BindableObject {
                 return
             }
             
-//            if let cacheHit = kMiniCacheForImg[self.imageURL] {
-//                self.imgData = cacheHit
-//                return
-//            }
-            
-            DispatchQueue.global(qos: .default).async {
-                if let data = try? Data(contentsOf: url) {
+            KingfisherManager.shared.retrieveImage(with: url) { result in
+                switch result {
+                case .success(let value):
                     print("Downloading Image..\(url)")
-                    if let image = UIImage(data: data) {
-                        DispatchQueue.main.async {
-                            self.imgData = image
-                        }
-                        
-                        //TODO kMiniCacheForImg.removeAll(keepingCapacity: true)
-//                        kMiniCacheForImg[self.imageURL] = image
-                    }
+                    self.imgData = value.image
+                case .failure:
+                    print("Downloading Image fails..\(result)")
+                    
                 }
             }
         } else {
