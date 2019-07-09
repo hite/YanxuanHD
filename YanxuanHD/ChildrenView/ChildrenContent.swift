@@ -25,7 +25,7 @@ struct ChildrenContent : View {
                     FeatureTab(
                         singleWidth: geo.size.width,
                         singleHeight: self.bannerImageHeight,
-                        bannerData: BannerData("", width: geo.size.width - 30 /* 30 是默认边距 */, height: self.bannerImageHeight),
+                        bannerData: BannerData("", width: geo.size.width, height: self.bannerImageHeight),
                         overSeaData: self.overSeaData,
                         newArrivalData: self.newArrivalData,
                         flashSaleData: self.flashSaleData,
