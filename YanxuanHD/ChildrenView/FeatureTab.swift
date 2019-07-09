@@ -64,7 +64,9 @@ struct FeatureTab : View {
                 List() {
                     
                     BannerScrollView(imageWidth: self.singleWidth - 30 /* 30 是默认边距 */, imageHeight: self.singleHeight, banner: self.bannerData)
-                        .frame(width: self.singleWidth - 30 /* 30 是默认边距 */, height: self.singleHeight)
+                        .frame(width: self.singleWidth - 30 /* 30 是默认边距 */, height: self.singleHeight).onDisappear {
+                            print("BannerScrollView disappear")
+                    }
                     
                     OverseaSection(userData: self.overSeaData)
 

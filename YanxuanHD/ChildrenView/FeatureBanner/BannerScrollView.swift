@@ -85,7 +85,7 @@ struct BannerScrollView : UIViewRepresentable{
         label.textAlignment = .center
         pageControl.addSubview(label)
         container.addSubview(pageControl)
-        
+        print("BannerScrollView makeUIView")
         return container
     }
     
