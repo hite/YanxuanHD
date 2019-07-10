@@ -329,7 +329,9 @@ struct ProfileView : View {
 高度内聚组件，不仅方便管理和复用，在开发阶段，可以很方便的 Preview 和 Live-Preview。同样得益于组件的自治，整个界面的某个局部进行数据刷新也非常容易，类似 ajax 技术。
 
 第三，**源码组织结构**。为了保持功能的内聚，每个 View 应该和它需要的其他配套源码再相同的文件夹里，如
+
 ![功能模块](https://github.com/hite/YanxuanHD/raw/master/277783-2e0a585a1212ffe4.png)
+
 其中， `NewArrivalSection` 是独立功能模块视图，`NewArrivalProductShow` 是子视图，`NewArrivalModel` 是数据模型，`NewArrivalData` 则是负责获取model 数据、处理、更新的管理对象。
 
 以上为 SwiftUI 诞生过程的简述，退出 Taylor Swift 人设。
@@ -343,7 +345,9 @@ SwiftUI 现在还在 beta，作者对 SwiftUI 创造性的使用合法的 Swift 
 这后面也依赖苹果对 Swift 的控制，所以在 Swift 语言层面对 SwiftUI 这个 UI 库，进行了极大的支持，寄希望于 SwiftUI 能带动 App 开发方式的演进。
 
 性能问题，beta 阶段可以忽略此问题，目前发现最大问题： cell 复用很糟糕。
+
 ![YanxuanHD 首页](https://github.com/hite/YanxuanHD/raw/master/277783-5546eb33948b6de0-2.png)
+
 右侧是由很多带图的 Cell 组成的 list，在没引入图片缓存前，上下滑动时，被隐藏、可见的 cell 会触发新建和销毁，导致图片频繁下载，界面非常卡顿。
 
 但这些都不是大问题，后期在 SwiftUI 迭代和社区最佳实践出现后，会有改观。但是我这里要说的是 SwiftUI 的支持库 Combine，这个响应式库，可能是阻碍 SwiftUI 被广泛应用的障碍。
