@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     // 用 WebView 来充当数据源
     var networking: UIWindow?
-
+    private var keyWindow: UIWindow? // 当前活动的窗口
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -22,21 +22,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Use a UIHostingController as window root view controller
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        let vc = WebViewController() {
+        if let windowScene = scene as? UIWindowScene {
 
-            let window = UIWindow(frame: UIScreen.main.bounds)
-            let vc = UIHostingController(rootView: ContentView())
-            window.rootViewController = vc
-            self.window = window
+            let splashVC = WebViewController() {
+                let window = UIWindow(windowScene: windowScene)
+                let vc = UIHostingController(rootView: ContentView())
+                window.rootViewController = vc
+                self.window = window
+                window.makeKeyAndVisible()
+            }
+            // 先显示 splash 界面，结束之后，显示 ContentView
+            let window = UIWindow(windowScene: windowScene)
+            splashVC.url = "https://you.163.com"
+            window.rootViewController = splashVC
+            self.networking = window
             window.makeKeyAndVisible()
         }
-        
-        vc.url = "https://you.163.com"
-        window.rootViewController = vc
-        //        window.isHidden = false
-        self.networking = window
-        window.makeKeyAndVisible()
         
         NotificationCenter.default.addObserver(forName: .presentModalWindow, object: nil, queue: nil) { (notif) in
             if let url = notif.object as? String {
@@ -68,7 +69,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let vc = UIHostingController(rootView: WebView(urlString: url, loadFinishEvaluated: jscode))
         print("Go to url \(url)")
         
-        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
+        guard let rootViewController = keyWindow?.rootViewController else {
             print("fail get root viewController")
             return
         }
@@ -79,7 +80,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let vc = UIHostingController(rootView: WebView(urlString: url))
         print("Go to url \(url)")
         
-        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
+        guard let rootViewController = keyWindow?.rootViewController else {
             print("fail get root viewController")
             return
         }
@@ -97,6 +98,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        if let windowScene = scene as? UIWindowScene {
+            self.keyWindow = windowScene.windows.first
+        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

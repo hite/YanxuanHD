@@ -28,7 +28,7 @@ struct FulisheProductShow : View {
                 .background(Color(red: 0.97, green: 0.55, blue: 0.20))
                     .clipShape(Circle())
                 .shadow(radius: 4)
-                .offset(x: -10, y: -10)
+                .offset(x: 10, y: 10)
             }
                 .tapAction {
                     showModal(self.model.detailUrl)

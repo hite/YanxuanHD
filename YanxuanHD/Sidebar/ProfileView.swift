@@ -19,9 +19,9 @@ struct ProfileView : View {
             Group {
                 NetworkImage(userData: NetworkImageData(self.avatar))
                     .frame(width: 60, height: 60)
-//                    .clipShape(Circle())
+                    .clipShape(Circle())
                     .overlay(Circle().stroke(Color.white, lineWidth: 4))
-//                    .shadow(radius: 10)
+                    .shadow(radius: 10)
                     .padding(.top, 15)
                     .padding(.bottom, 24)
                 // 超级会员 和 网易 V5 并列
@@ -37,7 +37,7 @@ struct ProfileView : View {
                 if self.isMember {
                     Text("超级会员")
                         .font(.system(size: 14))
-//                        .color(Color.init(red: 0.51, green: 0.45, blue: 0.35))
+                        .foregroundColor(Color.init(red: 0.51, green: 0.45, blue: 0.35))
                         .padding(EdgeInsets(top: 2, leading: 4, bottom: 2, trailing: 4))
                         .background(Self.gradientGold)
                         .border(Color.clear, width: 2, cornerRadius: 4)
