@@ -11,11 +11,11 @@ import SwiftUI
 import Combine
 
 final class FulisheData: BindableObject {
-    let didChange = PassthroughSubject<FulisheData, Never>()
+    let willChange = PassthroughSubject<FulisheData, Never>()
     
     var list: [FulisheItemModel] = [] {
         didSet {
-            didChange.send(self)
+            willChange.send(self)
         }
     }
     var banner: FulisheModel?

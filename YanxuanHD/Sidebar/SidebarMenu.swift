@@ -35,7 +35,7 @@ struct SidebarMenu : View {
         let top = -2 * offset
         
         return Text(self.model.title)
-            .color(.white)
+            .foregroundColor(.white)
             .font(Font.subheadline)
             .fontWeight(.bold)
             .padding(EdgeInsets(top: Length(top), leading: 0, bottom: Length(2 * offset), trailing: 0))

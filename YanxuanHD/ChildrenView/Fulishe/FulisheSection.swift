@@ -15,7 +15,7 @@ struct FulisheSection : View {
         VStack {
             SectionHeader(title:"福利社", desc: "", more: "查看全部福利 ", detailURL: "https://you.163.com/saleCenter/index_stat_referer=yanxuanhd")
             
-            ScrollView(showsHorizontalIndicator: false) {
+            ScrollView() {
                 HStack(alignment: .top, spacing: 0) {
                     if userData.banner != nil {
                         NetworkImage(userData: NetworkImageData(userData.banner!.picUrl))

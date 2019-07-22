@@ -11,11 +11,11 @@ import SwiftUI
 import Combine
 
 final class FlashSaleData: BindableObject {
-    let didChange = PassthroughSubject<FlashSaleData, Never>()
+    let willChange = PassthroughSubject<FlashSaleData, Never>()
     
     var list: [FlashSaleItemModel] = [] {
         didSet {
-            didChange.send(self)
+            willChange.send(self)
         }
     }
     var roundInfo: FlashSaleModel?

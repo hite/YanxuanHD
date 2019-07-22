@@ -23,13 +23,13 @@ struct FlashSaleProductShow : View {
             VStack(alignment: .leading) {
                 Text(model.itemName)
                     .fontWeight(.heavy)
-                    .color(Color(red: 0.4, green: 0.4, blue: 0.4))
+                    .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
                     .font(Font.system(size: 16))
                     .padding([.top], 8)
                 .padding([.bottom], 2)
                 
                 Text(model.simpleDesc)
-                    .color(lightGray)
+                    .foregroundColor(lightGray)
                     .font(Font.system(size: 14))
                     .bold()
                     .padding([.bottom], 2)
@@ -51,7 +51,7 @@ struct FlashSaleProductShow : View {
                     }
                     
                     Text("还剩\(model.totalSellVolume - model.currentSellVolume)件")
-                    .color(lightGray)
+                    .foregroundColor(lightGray)
                     .font(Font.system(size: 14))
                     .padding(.leading, 5)
                 }
@@ -59,15 +59,15 @@ struct FlashSaleProductShow : View {
                 HStack(alignment: .lastTextBaseline, spacing: 0) {
                     Text("限时价")
                     .font(.body)
-                    .color(kBrandColor)
+                    .foregroundColor(kBrandColor)
                     
                     Text("￥\(formatProductPrice(model.actualPrice))")
                     .font(.title)
-                    .color(kBrandColor)
+                    .foregroundColor(kBrandColor)
                     
                     Text("￥\(formatProductPrice(model.retailPrice))")
                         .font(.body)
-                        .color(lightGray)
+                        .foregroundColor(lightGray)
                         .strikethrough()
                     .padding(.leading, 10)
                 }.padding(0)
@@ -77,7 +77,7 @@ struct FlashSaleProductShow : View {
                 }) {
                     Text("立即抢购")
                     .font(.headline)
-                    .color(Color.white)
+                    .foregroundColor(Color.white)
                     .padding(EdgeInsets(top: 4, leading: 20, bottom: 4, trailing: 20))
                         .cornerRadius(4)
                     .background(kBrandColor)

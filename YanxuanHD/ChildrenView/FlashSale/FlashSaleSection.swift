@@ -15,7 +15,7 @@ struct FlashSaleSection : View {
             SectionHeader(title:"限时购", desc: "", more: "更多抢购", detailURL: "https://you.163.com/flashSale/index?_stat_area=mod_limit_more&_stat_referer=yanxuanhd")
             
             if self.userData.roundInfo != nil {
-                ScrollView(showsHorizontalIndicator: false) {
+                ScrollView() {
                     HStack(alignment: .top, spacing: 0) {
                         RoundInfoView(roundInfo: self.userData.roundInfo!)
 

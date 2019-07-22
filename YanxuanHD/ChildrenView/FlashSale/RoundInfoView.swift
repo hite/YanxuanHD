@@ -17,7 +17,7 @@ struct RoundInfoView : View {
             VStack {
                 Text("\(self.hourClock(roundInfo.startTime))点场")
                 .font(.title)
-                .color(brownColor)
+                    .foregroundColor(brownColor)
 
                 Divider()
                     .frame(width: 15)
@@ -31,7 +31,7 @@ struct RoundInfoView : View {
                 }) {
                     Text("查看全部 > ")
                     .font(.headline)
-                    .color(Color.white)
+                        .foregroundColor(Color.white)
                     .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
                     .background(Color(red: 0.66, green: 0.58, blue: 0.43))
                     .cornerRadius(30)

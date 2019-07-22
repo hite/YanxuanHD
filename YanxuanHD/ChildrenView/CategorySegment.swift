@@ -13,14 +13,14 @@ struct CategorySegment : View {
     @Binding var currentModel: CategorySegmentModel
 
     var body: some View {
-        ScrollView(showsHorizontalIndicator: false) {
+        ScrollView(.horizontal) {
             HStack(alignment: .top, spacing: 0) {
                 ForEach(kSegmentDataSource) {
                     model in
                     VStack {
                         Text(model.name)
                             .bold()
-                            .color(self.currentModel.id == model.id ? kBrandColor : Color.black)
+                            .foregroundColor(self.currentModel.id == model.id ? kBrandColor : Color.black)
                             .font(.system(size: 14))
                             .padding(.top, 30)
                         

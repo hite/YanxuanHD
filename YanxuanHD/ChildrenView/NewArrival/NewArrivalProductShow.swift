@@ -21,7 +21,7 @@ struct NewArrivalProductShow : View {
                 if self.cornerLabel(model) != nil {
                     Text(self.cornerLabel(model)!)
                     .font(.caption)
-                    .color(golden)
+                    .foregroundColor(golden)
                         .padding(4)
                     .border(golden, width: 1)
                     .position(x: 50, y: 30)
@@ -33,13 +33,13 @@ struct NewArrivalProductShow : View {
             if model.promTag.count > 0 {
                 Text(model.promTag)
                     .font(.headline)
-                    .color(.white)
+                    .foregroundColor(.white)
                     .padding(4)
                     .background(Color(red: 0.89, green: 0.41, blue: 0.27))
             } else {
                 Text("model.promTag")
                     .font(.headline)
-                    .color(.white)
+                    .foregroundColor(.white)
                     .padding(4)
             }
             
@@ -50,7 +50,7 @@ struct NewArrivalProductShow : View {
             HStack {
                 Text("￥\(formatProductPrice(model.retailPrice))")
                     .font(.body)
-                .color(kBrandColor)
+                .foregroundColor(kBrandColor)
                 if (model.counterPrice != 0 && model.retailPrice != model.counterPrice) {
                     Text("￥\(formatProductPrice(model.counterPrice))")
                         .font(.body)

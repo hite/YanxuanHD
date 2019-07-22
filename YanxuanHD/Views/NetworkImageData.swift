@@ -14,13 +14,13 @@ import Kingfisher
 var kMiniCacheForImg = [String: UIImage?](minimumCapacity: 100)
 
 final class NetworkImageData: BindableObject {
-    let didChange = PassthroughSubject<NetworkImageData, Never>()
+    let willChange = PassthroughSubject<NetworkImageData, Never>()
     
     var imageURL: String
     
     var imgData: UIImage? {
         didSet {
-            didChange.send(self)
+            willChange.send(self)
         }
     }
     

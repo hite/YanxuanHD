@@ -12,11 +12,11 @@ import Combine
 
 final class BannerData: BindableObject {
 
-    let didChange = PassthroughSubject<BannerData, Never>()
+    let willChange = PassthroughSubject<BannerData, Never>()
     
     var bannes: [BannerImageModel] = [] {
         didSet {
-            didChange.send(self)
+            willChange.send(self)
         }
     }
     

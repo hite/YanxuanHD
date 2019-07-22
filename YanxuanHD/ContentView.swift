@@ -15,15 +15,7 @@ struct ContentView : View {
     let activeTabData = ActiveTabData()
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
-            Sidebar()
-                .environmentObject(activeTabData)
-                .frame(width: 130)
-                .fixedSize(horizontal: true, vertical: false)
-                .background(Color.init(red: 0.15, green: 0.11, blue: 0.06))
-            
-            ChildrenContent()
-                .environmentObject(self.activeTabData)
-            .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+            Text("what")
         }
     }
 }

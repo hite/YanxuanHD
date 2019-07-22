@@ -24,12 +24,12 @@ struct OverseaProductShow : View {
                 HStack {
                     Text(product.name)
                         .font(Font.system(size: 24 * zoom))
-                        .color(.gray)
+                        .foregroundColor(.gray)
                     
                     if product.newOnShelf {
                         Text("New")
                             .font(Font.footnote)
-                            .color(kBrandColor)
+                            .foregroundColor(kBrandColor)
                             .padding(2)
                     }
                 }
@@ -38,7 +38,7 @@ struct OverseaProductShow : View {
                 
                 Text("\(formatProductPrice(product.floorPrice, fix: 2))元起")
                     .font(Font.system(size: 14 * zoom))
-                    .color(.gray)
+                    .foregroundColor(.gray)
             }
                 .offset(x: offsetX, y: offsetY)
             }

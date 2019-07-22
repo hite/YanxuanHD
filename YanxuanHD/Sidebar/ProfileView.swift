@@ -19,15 +19,15 @@ struct ProfileView : View {
             Group {
                 NetworkImage(userData: NetworkImageData(self.avatar))
                     .frame(width: 60, height: 60)
-                    .clipShape(Circle())
+//                    .clipShape(Circle())
                     .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                    .shadow(radius: 10)
+//                    .shadow(radius: 10)
                     .padding(.top, 15)
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 24)
                 // 超级会员 和 网易 V5 并列
                 Text(self.userName)
                     .font(.caption)
-                    .color(.white)
+                    .foregroundColor(.white)
                 
             }.tapAction {
                 showLoginWebViewModal("https://you.163.com/user/index")
@@ -36,13 +36,13 @@ struct ProfileView : View {
             HStack(spacing: 2.0) {
                 if self.isMember {
                     Text("超级会员")
-                        .font(.system(size: 12))
-                        .color(Color.init(red: 0.51, green: 0.45, blue: 0.35))
+                        .font(.system(size: 14))
+//                        .color(Color.init(red: 0.51, green: 0.45, blue: 0.35))
                         .padding(EdgeInsets(top: 2, leading: 4, bottom: 2, trailing: 4))
                         .background(Self.gradientGold)
                         .border(Color.clear, width: 2, cornerRadius: 4)
                 }
-                
+ 
                 ZStack(alignment: .bottomTrailing) {
                     Image("sidebar-level")
                         .resizable()
@@ -87,7 +87,7 @@ struct ProfileView : View {
 #if DEBUG
 struct profileView_Previews : PreviewProvider {
     static var previews: some View {
-        ProfileView(avatar: "http://nos.netease.com/mail-online/f0160f78b153097e54a0b4730d6d2b93/mail180x180.jpg", userName: "xiangheka2", isMember: true, memberLevel: 6).background(Color.black)
+        ProfileView(avatar: "sidebar-avatar", userName: "xiangheka2", isMember: true, memberLevel: 6).background(Color.black)
     }
 }
 #endif

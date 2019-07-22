@@ -12,13 +12,13 @@ import Combine
 import Kingfisher
 
 final class BannerImageData: BindableObject {
-    let didChange = PassthroughSubject<BannerImageData, Never>()
+    let willChange = PassthroughSubject<BannerImageData, Never>()
     
     var imageModel: BannerImageModel
     
     var imgData: UIImage? {
         didSet {
-            didChange.send(self)
+            willChange.send(self)
         }
     }
   

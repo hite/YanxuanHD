@@ -11,11 +11,11 @@ import SwiftUI
 import Combine
 
 final class OverseaData: BindableObject {
-    let didChange = PassthroughSubject<OverseaData, Never>()
+    let willChange = PassthroughSubject<OverseaData, Never>()
     
     var list: [OverseaModel] = [] {
         didSet {
-            didChange.send(self)
+            willChange.send(self)
         }
     }
     

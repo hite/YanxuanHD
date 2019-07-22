@@ -13,7 +13,7 @@ struct Loading : View {
     var body: some View {
         HStack {
             Text("正在加载...\(Int(self.progress * 100))%")
-            .color(Color.white)
+                .foregroundColor(Color.white)
             .font(.title)
         }
             .frame(minWidth:0,maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)

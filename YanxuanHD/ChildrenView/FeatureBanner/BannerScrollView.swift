@@ -131,7 +131,7 @@ struct BannerScrollView : UIViewRepresentable{
                 updateImage(index, imageData)
             } else {
                 
-                let _ = bannerData.didChange.sink { (bannerData) in
+                let _ = bannerData.willChange.sink { (bannerData) in
                     //
                     print("received value: \(bannerData)")
                     if let imageData = bannerData.imgData {
@@ -155,7 +155,7 @@ struct BannerScrollView : UIViewRepresentable{
         if userData.bannes.count > 0 {
             self.updateScrollView(scrollView, banners: userData.bannes, in: context)
         }
-        let _ = userData.didChange.sink { (ud) in
+        let _ = userData.willChange.sink { (ud) in
             // 使用数据填充 View
             self.updateScrollView(scrollView, banners: ud.bannes, in: context)
         }

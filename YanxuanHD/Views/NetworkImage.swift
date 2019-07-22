@@ -24,10 +24,14 @@ struct NetworkImage : View {
     }
 }
 
-//#if DEBUG
-//struct NetworkImage_Previews : PreviewProvider {
-//    static var previews: some View {
-//        NetworkImage(userData: NetworkImageData("https://yanxuan.nosdn.127.net/027d936f4ce88772a57cb993772c82d9.png"))
-//    }
-//}
-//#endif
+#if DEBUG
+struct NetworkImage_Previews : PreviewProvider {
+    static var previews: some View {
+        NetworkImage(userData: NetworkImageData("sidebar-avatar"))
+            .frame(width: 60, height: 60)
+            .clipShape(Circle())
+//            .overlay(Circle().stroke(Color.white, lineWidth: 4))
+//            .shadow(radius: 10)
+    }
+}
+#endif

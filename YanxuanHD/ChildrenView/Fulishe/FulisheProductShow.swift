@@ -23,7 +23,7 @@ struct FulisheProductShow : View {
 
                 Text("\(formatProductPrice(model.disCount))折")
                 .fontWeight(.heavy)
-                .color(Color.white)
+                .foregroundColor(Color.white)
                     .frame(width: 40, height: 40)
                 .background(Color(red: 0.97, green: 0.55, blue: 0.20))
                     .clipShape(Circle())
@@ -37,7 +37,7 @@ struct FulisheProductShow : View {
             VStack(alignment: .leading) {
                 Text(model.name)
                     .fontWeight(.heavy)
-                    .color(Color.black)
+                    .foregroundColor(Color.black)
                     .font(Font.system(size: 14))
                     .padding([.top], 18)
                     .padding([.bottom], 2)
@@ -46,16 +46,16 @@ struct FulisheProductShow : View {
                 HStack(alignment: .lastTextBaseline, spacing: 0) {
                     Text("限时价")
                         .font(.caption)
-                        .color(kBrandColor)
+                        .foregroundColor(kBrandColor)
 
                     Text("￥\(formatProductPrice(model.retailPrice))")
                         .font(.subheadline)
-                        .color(kBrandColor)
+                        .foregroundColor(kBrandColor)
                 }.padding(0)
 
                 Text("￥\(formatProductPrice(model.counterPrice))")
                     .font(.caption)
-                    .color(lightGray)
+                    .foregroundColor(lightGray)
                     .strikethrough()
                     .padding(.leading, 10)
 
@@ -64,7 +64,7 @@ struct FulisheProductShow : View {
                 }) {
                     Text("立即抢购")
                         .font(.caption)
-                        .color(Color.white)
+                        .foregroundColor(Color.white)
                         .padding(EdgeInsets(top: 4, leading: 20, bottom: 4, trailing: 20))
                         .cornerRadius(4)
                         .background(kBrandColor)

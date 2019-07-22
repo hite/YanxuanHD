@@ -78,10 +78,10 @@ struct FeatureTab : View {
 
                     VStack {
                         Group{
-                            Text("妙得ICP证号：ICP 证浙B2-20160106").color(Color.white)
-                            Text("出版物经营许可证：新出发滨字第0132号").color(Color.white)
-                            Text("食品经营许可证：JY13301080111719").color(Color.white)
-                            Text("单用途商业预付卡备案证：330100AAC0024").color(Color.white)
+                            Text("妙得ICP证号：ICP 证浙B2-20160106").foregroundColor(Color.white)
+                            Text("出版物经营许可证：新出发滨字第0132号").foregroundColor(Color.white)
+                            Text("食品经营许可证：JY13301080111719").foregroundColor(Color.white)
+                            Text("单用途商业预付卡备案证：330100AAC0024").foregroundColor(Color.white)
                         }
                         .font(.caption).padding(.vertical, 2)
                         }.frame(minWidth: 0, maxWidth: .infinity)

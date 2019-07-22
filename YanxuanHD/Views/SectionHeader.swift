@@ -22,7 +22,7 @@ struct SectionHeader : View {
                 .padding(.trailing, 10)
             
             Text(self.desc)
-                .color(Color.gray)
+                .foregroundColor(Color.gray)
                 .font(.caption)
                 .padding(.top, 14)
             

@@ -35,7 +35,7 @@ struct CountDownView : View {
     var body: some View {
         VStack {
             Text(self.isTimeout ? "本场已结束" : "距离结束还剩")
-            .color(brownColor)
+                .foregroundColor(brownColor)
             .font(.headline)
             .fontWeight(.heavy)
                 .padding(.bottom, 20)
@@ -44,17 +44,17 @@ struct CountDownView : View {
                 paper(self.hour)
                 
                 Text(":")
-                .color(brownColor)
+                    .foregroundColor(brownColor)
                 
                 paper(self.minute)
                 
                 Text(":")
-                    .color(brownColor)
+                    .foregroundColor(brownColor)
                 
                 paper(self.second)
                 
             }.frame(width: 200)
-            }.onReceive(NotificationCenter.default.publisher(for: .countdownTimer)) {
+            }.onReceive(NotificationCenter.default.publisher(for: .countdownTimer)) { output in
                 self.goneTime += 1
                 
                 if Int(self.leftover / 1000) <= self.goneTime {
@@ -81,7 +81,7 @@ struct CountDownView : View {
     func paper(_ num: String) -> some View {
         return Text(num)
             .font(Font.system(size: 18))
-            .color(Color.white)
+            .foregroundColor(Color.white)
             .padding(10)
             .background(brownColor)
     }
