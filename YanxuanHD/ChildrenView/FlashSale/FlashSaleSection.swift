@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct FlashSaleSection : View {
-    @State var userData: FlashSaleData
+    @EnvironmentObject var userData: FlashSaleData
     var body: some View {
         VStack {
             SectionHeader(title:"限时购", desc: "", more: "更多抢购", detailURL: "https://you.163.com/flashSale/index?_stat_area=mod_limit_more&_stat_referer=yanxuanhd")
@@ -19,15 +19,15 @@ struct FlashSaleSection : View {
                     HStack(alignment: .top, spacing: 0) {
                         RoundInfoView(roundInfo: self.userData.roundInfo!)
 
-                        if self.userData.list.count % 2 == 0 {
-                            ForEach(0 ..< self.userData.list.count) { idx in
-                                if idx % 2 == 0 {
-                                    VStack(alignment: .leading, spacing: 0) {
-                                        FlashSaleProductShow(model: self.userData.list[idx])
-                                        FlashSaleProductShow(model: self.userData.list[idx + (2 - 1)])
-                                            .offset(x: 0, y: -1)
-                                    }
-                                }
+                        if self.userData.list.count > 0 {
+                            if self.userData.list.count % 2 == 0 {
+                                piece(0)
+                            }
+                            if self.userData.list.count % 4 == 0 {
+                                piece(2)
+                            }
+                            if self.userData.list.count % 6 == 0 {
+                                piece(4)
                             }
                         } else {
                             Text("数据格式错误，返回了个数是奇数")
@@ -38,19 +38,20 @@ struct FlashSaleSection : View {
         }
     }
     
-    func legoFor(index: Int, step: Int) -> some View {
+    func piece(_ index: Int) -> some View{
         return VStack(alignment: .leading, spacing: 0) {
-            FlashSaleProductShow(model: userData.list[index])
-            FlashSaleProductShow(model: userData.list[index + (step - 1)])
+            FlashSaleProductShow(model: self.userData.list[index])
+            FlashSaleProductShow(model: self.userData.list[index + (2 - 1)])
                 .offset(x: 0, y: -1)
         }
     }
+
 }
 
 #if DEBUG
 struct FlashSaleSection_Previews : PreviewProvider {
     static var previews: some View {
-        FlashSaleSection(userData: FlashSaleData())
+        FlashSaleSection().environmentObject(FlashSaleData())
     }
 }
 #endif

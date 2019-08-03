@@ -51,7 +51,13 @@ struct PresentButton: UIViewRepresentable {
             let vc = UIHostingController(rootView: WebView(urlString: self.presentButton.url))
             print("Go to url \(self.presentButton.url)")
             
-            guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
+            let keyWindow = UIApplication.shared.connectedScenes
+                .filter({$0.activationState == .foregroundActive})
+                .map({$0 as? UIWindowScene})
+                .compactMap({$0})
+                .first?.windows
+                .filter({$0.isKeyWindow}).first
+            guard let rootViewController = keyWindow?.rootViewController else {
                 print("fail get root viewController")
                 return
             }

@@ -24,21 +24,21 @@ struct SidebarMenu : View {
             self.titleView(self.smaller ? 5: 4)
             }.frame(minWidth: 0, maxWidth: .infinity)
             .background(self.isSelected ? golden: Color.clear)
-            .tapAction {
+            .onTapGesture {
                 withAnimation {
                     self.activeData.activeMenuItem = self.model
                 }
         }
     }
     
-    func titleView(_ offset: Double) -> some View {
+    func titleView(_ offset: Int) -> some View {
         let top = -2 * offset
         
         return Text(self.model.title)
-            .foregroundColor(.white)
             .font(Font.subheadline)
             .fontWeight(.bold)
-            .padding(EdgeInsets(top: Length(top), leading: 0, bottom: Length(2 * offset), trailing: 0))
+            .foregroundColor(.white)
+            .padding(EdgeInsets(top: CGFloat(top), leading: 0, bottom: CGFloat(2 * offset), trailing: 0))
     }
 
 }

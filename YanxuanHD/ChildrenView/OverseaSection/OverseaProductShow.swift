@@ -19,7 +19,7 @@ struct OverseaProductShow : View {
     
     var body: some View {
         ZStack {
-            NetworkImage(userData: NetworkImageData(product.picUrl))
+            NetworkImage().environmentObject( NetworkImageData(product.picUrl))
             VStack {
                 HStack {
                     Text(product.name)
@@ -42,7 +42,7 @@ struct OverseaProductShow : View {
             }
                 .offset(x: offsetX, y: offsetY)
             }
-            .tapAction {
+            .onTapGesture {
                 showModal("https://you.163.com/item/manufacturer?tagId=\(self.product.id)")
             }
     }

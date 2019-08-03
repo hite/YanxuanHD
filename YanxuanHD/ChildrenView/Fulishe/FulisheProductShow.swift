@@ -17,7 +17,7 @@ struct FulisheProductShow : View {
     var body: some View {
         HStack {
             ZStack(alignment: .bottomTrailing) {
-                NetworkImage(userData: NetworkImageData(model.showPicUrl))
+                NetworkImage().environmentObject(NetworkImageData(model.showPicUrl))
                 .background(Color(red: 0.99, green: 0.98, blue: 0.96))
                 .padding(20)
 
@@ -30,7 +30,7 @@ struct FulisheProductShow : View {
                 .shadow(radius: 4)
                 .offset(x: 10, y: 10)
             }
-                .tapAction {
+                .onTapGesture {
                     showModal(self.model.detailUrl)
             }
 

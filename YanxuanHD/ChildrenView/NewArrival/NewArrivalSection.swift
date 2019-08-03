@@ -10,7 +10,7 @@ import SwiftUI
 
 struct NewArrivalSection : View {
     
-    @State var userData: NewArrivalData
+    @EnvironmentObject var userData: NewArrivalData
     
     var body: some View {
         VStack {
@@ -23,7 +23,7 @@ struct NewArrivalSection : View {
                     }
                 }
             }
-                .frame(height: 400)
+                .frame(height: 360)
         }
     }
 }
@@ -31,7 +31,7 @@ struct NewArrivalSection : View {
 #if DEBUG
 struct NewArrivalSection_Previews : PreviewProvider {
     static var previews: some View {
-        NewArrivalSection(userData: NewArrivalData())
+        NewArrivalSection().environmentObject(NewArrivalData())
     }
 }
 #endif

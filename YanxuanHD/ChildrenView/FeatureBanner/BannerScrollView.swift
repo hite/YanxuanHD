@@ -24,7 +24,13 @@ class BannerActionDelegate {
         let vc = UIHostingController(rootView: WebView(urlString: bannerModel.destinationURL))
         print("Go to url \(bannerModel.destinationURL)")
         
-        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
+        let keyWindow = UIApplication.shared.connectedScenes
+            .filter({$0.activationState == .foregroundActive})
+            .map({$0 as? UIWindowScene})
+            .compactMap({$0})
+            .first?.windows
+            .filter({$0.isKeyWindow}).first
+        guard let rootViewController = keyWindow?.rootViewController else {
             print("fail get root viewController")
             return
         }

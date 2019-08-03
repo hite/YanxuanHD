@@ -15,8 +15,8 @@ struct FlashSaleProductShow : View {
     let lightGray = Color(red: 0.6, green: 0.6, blue: 0.6)
     var body: some View {
         HStack {
-            NetworkImage(userData: NetworkImageData(model.primaryPicUrl))
-                .tapAction {
+            NetworkImage().environmentObject(NetworkImageData(model.primaryPicUrl))
+                .onTapGesture {
                     showModal(self.model.detailUrl)
             }
             
@@ -87,9 +87,9 @@ struct FlashSaleProductShow : View {
             .border(Color(red: 0.94, green: 0.93, blue: 0.89), width: 1)
     }
     
-    func progress(_ model: FlashSaleItemModel, width: Length) -> Length {
-        let factor = Length(model.currentSellVolume) / Length(model.totalSellVolume)
-        return width * factor
+    func progress(_ model: FlashSaleItemModel, width: CGFloat) -> CGFloat {
+        let factor = model.currentSellVolume / model.totalSellVolume
+        return width * CGFloat(factor)
     }
 }
 

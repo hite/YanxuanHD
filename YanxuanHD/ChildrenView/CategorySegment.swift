@@ -34,7 +34,7 @@ struct CategorySegment : View {
                         }
                         .frame(width: 100)
 //                        .tag(model)
-                        .tapAction {
+                        .onTapGesture {
                             self.currentModel =  model
                     }
             

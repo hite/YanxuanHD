@@ -15,18 +15,18 @@ struct NewArrivalProductShow : View {
     var body: some View {
         VStack {
             ZStack {
-                NetworkImage(userData: NetworkImageData(model.primaryPicUrl))
+                NetworkImage().environmentObject(NetworkImageData(model.primaryPicUrl))
                 .background(Color(red: 0xf4/0xff, green: 0xf4/0xff, blue: 0xf4/0xff))
                 
                 if self.cornerLabel(model) != nil {
                     Text(self.cornerLabel(model)!)
-                    .font(.caption)
+                        .font(.system(size: 10))
                     .foregroundColor(golden)
                         .padding(4)
                     .border(golden, width: 1)
-                    .position(x: 50, y: 30)
+                    .position(x: 25, y: 15)
                 }
-            }.tapAction {
+            }.onTapGesture {
                 showModal(self.model.targetUrl)
             }.padding(.bottom, 10)
             
@@ -44,6 +44,7 @@ struct NewArrivalProductShow : View {
             }
             
             Text(model.name)
+                .lineLimit(1)
                 .font(.headline)
                 .padding(.bottom, 1)
                 .padding(.top, 10)

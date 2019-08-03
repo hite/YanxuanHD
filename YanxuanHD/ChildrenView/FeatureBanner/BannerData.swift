@@ -10,15 +10,11 @@ import Foundation
 import SwiftUI
 import Combine
 
-final class BannerData: BindableObject {
+final class BannerData: ObservableObject, Identifiable {
 
     let willChange = PassthroughSubject<BannerData, Never>()
     
-    var bannes: [BannerImageModel] = [] {
-        didSet {
-            willChange.send(self)
-        }
-    }
+    var bannes: [BannerImageModel] = []
     
     var url: String
     

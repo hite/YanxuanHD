@@ -11,7 +11,7 @@ import SwiftUI
 import Combine
 import Kingfisher
 
-final class BannerImageData: BindableObject {
+final class BannerImageData: ObservableObject, Identifiable {
     let willChange = PassthroughSubject<BannerImageData, Never>()
     
     var imageModel: BannerImageModel

@@ -10,17 +10,11 @@ import Foundation
 import SwiftUI
 import Combine
 
-final class FulisheData: BindableObject {
-    let willChange = PassthroughSubject<FulisheData, Never>()
-    
-    var list: [FulisheItemModel] = [] {
-        didSet {
-            willChange.send(self)
-        }
-    }
+final class FulisheData: ObservableObject, Identifiable {
+    @Published var list: [FulisheItemModel] = []
     var banner: FulisheModel?
+    
     init() {
-        
         Networking.fetch(.fulishe) { (r) in
             if let fulisheVO = r as? Dictionary<String, Any>{
                 let decoder = JSONDecoder()
@@ -59,6 +53,7 @@ final class FulisheData: BindableObject {
                         }
                         
                     }
+                    // 保证是偶数，且少于 6 个
                     self.list = list
                 }
             }

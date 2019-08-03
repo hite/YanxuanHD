@@ -10,14 +10,9 @@ import Foundation
 import SwiftUI
 import Combine
 
-final class FlashSaleData: BindableObject {
-    let willChange = PassthroughSubject<FlashSaleData, Never>()
-    
-    var list: [FlashSaleItemModel] = [] {
-        didSet {
-            willChange.send(self)
-        }
-    }
+final class FlashSaleData: ObservableObject, Identifiable {
+
+    @Published var list: [FlashSaleItemModel] = []
     var roundInfo: FlashSaleModel?
     init() {
         

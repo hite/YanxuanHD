@@ -10,7 +10,7 @@
 import Combine
 import SwiftUI
 
-final class ActiveTabData: BindableObject {
+final class ActiveTabData: ObservableObject, Identifiable {
     
     let willChange = PassthroughSubject<ActiveTabData, Never>()
     

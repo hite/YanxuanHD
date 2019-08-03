@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct FulisheSection : View {
-    @State var userData: FulisheData
+    @EnvironmentObject  var userData: FulisheData
     
     var body: some View {
         VStack {
@@ -18,25 +18,28 @@ struct FulisheSection : View {
             ScrollView() {
                 HStack(alignment: .top, spacing: 0) {
                     if userData.banner != nil {
-                        NetworkImage(userData: NetworkImageData(userData.banner!.picUrl))
+                        NetworkImage().environmentObject(NetworkImageData(userData.banner!.picUrl))
                     }
-                    
-                    
+                    // ForEach 循环，会导致编译时间过长，而导致无法编译，目前的 SwiftUI 设计缺陷
+                    // beta5 之后，不能使用原先的循环的方式来遍历了，只好分拆为更确定的 3 个数量
                     if self.userData.list.count > 0 && self.userData.list.count % 2 == 0 {
-                        ForEach(0 ..< self.userData.list.count) { idx in
-                            if idx % 2 == 0 {
-                                VStack(alignment: .leading, spacing: 0) {
-                                    FulisheProductShow(model: self.userData.list[idx])
-                                    FulisheProductShow(model: self.userData.list[idx + (2 - 1)])
-                                        .offset(x: 0, y: -1)
-                                }
-                            }
-                        }
-                    } else {
-                        Text("数据格式错误，返回了个数是奇数")
+                        renderPieceAt(0)
+                    }
+                    if self.userData.list.count > 0 && self.userData.list.count % 4 == 0 {
+                        renderPieceAt(2)
+                    }
+                    if self.userData.list.count > 0 && self.userData.list.count % 6 == 0 {
+                        renderPieceAt(4)
                     }
                 }
             }.frame(height: 400)
+        }
+    }
+    
+    func renderPieceAt(_ idx: Int) -> some View {
+        return VStack {
+            FulisheProductShow(model: self.userData.list[idx])
+            FulisheProductShow(model: self.userData.list[idx + 1])
         }
     }
 }
@@ -44,7 +47,7 @@ struct FulisheSection : View {
 #if DEBUG
 struct FulisheSection_Previews : PreviewProvider {
     static var previews: some View {
-        FulisheSection(userData: FulisheData())
+        FulisheSection().environmentObject(FulisheData())
     }
 }
 #endif

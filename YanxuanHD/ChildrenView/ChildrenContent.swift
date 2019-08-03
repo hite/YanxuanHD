@@ -12,26 +12,23 @@ import SwiftUI
 struct ChildrenContent : View {
     @EnvironmentObject var activeTabData: ActiveTabData
 
-    let bannerImageHeight: Length = 150
     // bannerData 数据源放在 list 外面避免被内部缓存丢弃后的重绘
-    let overSeaData = OverseaData()
-    let newArrivalData = NewArrivalData()
-    let flashSaleData = FlashSaleData()
-    let fulisheData = FulisheData()
+
     var body: some View {
         VStack {
             if self.activeTabData.activeMenuItem.id == 1001 {
-                GeometryReader { geo in
-                    FeatureTab(
-                        singleWidth: geo.size.width,
-                        singleHeight: self.bannerImageHeight,
-                        bannerData: BannerData("", width: geo.size.width, height: self.bannerImageHeight),
-                        overSeaData: self.overSeaData,
-                        newArrivalData: self.newArrivalData,
-                        flashSaleData: self.flashSaleData,
-                        fulisheData: self.fulisheData                    )
+               GeometryReader { geo in
+   
+                FeatureTab(
+                    singleWidth: geo.size.width,
+                    singleHeight: 150,// 用变量就不行？
+                    bannerData: BannerData("", width: geo.size.width, height: 150),// 用变量就不行？
+                    overSeaData: OverseaData(),
+                    newArrivalData: NewArrivalData(),
+                    flashSaleData: FlashSaleData(),
+                    fulisheData: FulisheData())
                 }
-                
+
             } else if(self.activeTabData.activeMenuItem.url.count > 0 ){
                 WebView(urlString: self.activeTabData.activeMenuItem.url)
             }

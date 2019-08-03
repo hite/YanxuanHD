@@ -10,10 +10,10 @@ import SwiftUI
 
 struct OverseaSection : View {
     
-    @State var userData: OverseaData
+    @EnvironmentObject var userData: OverseaData
     
     var body: some View {
-        Section {
+        VStack {
             SectionHeader(title:"品牌制造商", desc: "工厂直达消费者，剔除品牌溢价", more: "更多制造商", detailURL: "https://you.163.com/manufacturer/list?_stat_area=manufacturer_link&_stat_referer=yanxuanhd")
             
             if self.userData.list.count == 4 {
@@ -37,7 +37,7 @@ struct OverseaSection : View {
 #if DEBUG
 struct OverseaSection_Previews : PreviewProvider {
     static var previews: some View {
-        OverseaSection(userData: OverseaData())
+        OverseaSection().environmentObject(OverseaData())
     }
 }
 #endif

@@ -17,7 +17,7 @@ struct ProfileView : View {
     var body: some View {
         VStack {
             Group {
-                NetworkImage(userData: NetworkImageData(self.avatar))
+                NetworkImage().environmentObject(NetworkImageData(self.avatar))
                     .frame(width: 60, height: 60)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(Color.white, lineWidth: 4))
@@ -29,7 +29,7 @@ struct ProfileView : View {
                     .font(.caption)
                     .foregroundColor(.white)
                 
-            }.tapAction {
+            }.onTapGesture {
                 showLoginWebViewModal("https://you.163.com/user/index")
             }
             
@@ -39,8 +39,9 @@ struct ProfileView : View {
                         .font(.system(size: 14))
                         .foregroundColor(Color.init(red: 0.51, green: 0.45, blue: 0.35))
                         .padding(EdgeInsets(top: 2, leading: 4, bottom: 2, trailing: 4))
-                        .background(Self.gradientGold)
-                        .border(Color.clear, width: 2, cornerRadius: 4)
+                        .background(Self.golden)
+                        .border(Color.clear, width: 2)
+                    .cornerRadius(4)
                 }
  
                 ZStack(alignment: .bottomTrailing) {

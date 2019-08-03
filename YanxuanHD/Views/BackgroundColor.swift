@@ -40,8 +40,8 @@ struct BackgroundColor: View {
                 )
                 }.fill(LinearGradient(
                     gradient: .init(colors: [self.startColor, self.endColor]),
-                    startPoint: .init(x: 1, y: 0.5),
-                    endPoint: .init(x: 0, y: 0.5)
+                    startPoint: .init(x: 0, y: 0),
+                    endPoint: .init(x: 1, y: 1)
                 ))
         }
     }

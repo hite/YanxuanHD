@@ -13,7 +13,7 @@ struct RoundInfoView : View {
     let brownColor = Color(red: 0.38, green: 0.33, blue: 0.28)
     var body: some View {
         ZStack {
-            NetworkImage(userData: NetworkImageData(roundInfo.backgroundImageUrl))
+            NetworkImage().environmentObject(NetworkImageData(roundInfo.backgroundImageUrl))
             VStack {
                 Text("\(self.hourClock(roundInfo.startTime))点场")
                 .font(.title)

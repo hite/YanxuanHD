@@ -10,14 +10,9 @@ import Foundation
 import SwiftUI
 import Combine
 
-final class NewArrivalData: BindableObject {
-    let willChange = PassthroughSubject<NewArrivalData, Never>()
+final class NewArrivalData: ObservableObject, Identifiable {
     
-    var list: [NewArrivalModel] = [] {
-        didSet {
-            willChange.send(self)
-        }
-    }
+    @Published var list: [NewArrivalModel] = []
     
     init() {
         

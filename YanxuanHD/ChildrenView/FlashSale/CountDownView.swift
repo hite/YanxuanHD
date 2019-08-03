@@ -83,6 +83,7 @@ struct CountDownView : View {
             .font(Font.system(size: 18))
             .foregroundColor(Color.white)
             .padding(10)
+            .frame(width: 50, height: 50, alignment: .center)
             .background(brownColor)
     }
 }

@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct NetworkImage : View {
-    @State var userData: NetworkImageData
+    @EnvironmentObject var userData: NetworkImageData
 
     var body: some View {
         Group {
@@ -27,7 +27,7 @@ struct NetworkImage : View {
 #if DEBUG
 struct NetworkImage_Previews : PreviewProvider {
     static var previews: some View {
-        NetworkImage(userData: NetworkImageData("sidebar-avatar"))
+        NetworkImage().environmentObject(NetworkImageData("https://gaoqing.fm/uploads/2019/33940d11dfaa.jpg"))
             .frame(width: 60, height: 60)
             .clipShape(Circle())
 //            .overlay(Circle().stroke(Color.white, lineWidth: 4))

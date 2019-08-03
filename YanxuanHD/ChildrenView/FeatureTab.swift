@@ -67,14 +67,14 @@ struct FeatureTab : View {
                         .frame(width: self.singleWidth - 30 /* 30 是默认边距 */, height: self.singleHeight).onDisappear {
                             print("BannerScrollView disappear")
                     }
-                    
-                    OverseaSection(userData: self.overSeaData)
 
-                    NewArrivalSection(userData: self.newArrivalData)
+                    OverseaSection().environmentObject(self.overSeaData)
 
-                    FlashSaleSection(userData: self.flashSaleData)
+                    NewArrivalSection().environmentObject(self.newArrivalData)
 
-                    FulisheSection(userData: self.fulisheData)
+                    FlashSaleSection().environmentObject(self.flashSaleData)
+
+                    FulisheSection().environmentObject(self.fulisheData)
 
                     VStack {
                         Group{
@@ -84,12 +84,12 @@ struct FeatureTab : View {
                             Text("单用途商业预付卡备案证：330100AAC0024").foregroundColor(Color.white)
                         }
                         .font(.caption).padding(.vertical, 2)
-                        }.frame(minWidth: 0, maxWidth: .infinity)
-                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-                        .background(Color(red: 0.25, green: 0.25, blue: 0.25))
+                    }.frame(minWidth: 0, maxWidth: .infinity)
+                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                    .background(Color(red: 0.25, green: 0.25, blue: 0.25))
                     
                 }
-                .padding(0)
+//                .padding(0)
             } else {
                 WebView(urlString: currentSegmentModel.destinationURL)
             }

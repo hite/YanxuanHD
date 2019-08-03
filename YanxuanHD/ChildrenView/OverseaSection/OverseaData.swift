@@ -10,14 +10,9 @@ import Foundation
 import SwiftUI
 import Combine
 
-final class OverseaData: BindableObject {
-    let willChange = PassthroughSubject<OverseaData, Never>()
-    
-    var list: [OverseaModel] = [] {
-        didSet {
-            willChange.send(self)
-        }
-    }
+final class OverseaData: ObservableObject, Identifiable {
+
+    @Published var list: [OverseaModel] = []
     
     init() {
         
