@@ -10,7 +10,7 @@ Poor performance when list scrolling while the images are downloaded.
 多图滚动性能欠佳
 
 # Enviroment 运行环境 
-XCode 11 beta4
+XCode 11 beta5 (和 beta4 相比变化好大)
 
 
 # AppScreenShot App 截图

@@ -25,9 +25,8 @@ struct SidebarMenu : View {
             }.frame(minWidth: 0, maxWidth: .infinity)
             .background(self.isSelected ? golden: Color.clear)
             .onTapGesture {
-                withAnimation {
-                    self.activeData.activeMenuItem = self.model
-                }
+                self.activeData.activeMenuItem = self.model
+                print("sSelect \(self.activeData.activeMenuItem)")
         }
     }
     

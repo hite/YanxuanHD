@@ -11,12 +11,5 @@ import Combine
 import SwiftUI
 
 final class ActiveTabData: ObservableObject, Identifiable {
-    
-    let willChange = PassthroughSubject<ActiveTabData, Never>()
-    
-    var activeMenuItem = sidebarMenuItems[0] {
-        didSet {
-            willChange.send(self)
-        }
-    }
+    @Published var activeMenuItem = sidebarMenuItems[0]
 }

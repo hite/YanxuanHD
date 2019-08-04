@@ -23,7 +23,7 @@ struct NewArrivalSection : View {
                     }
                 }
             }
-                .frame(height: 360)
+                .frame(height: 320)
         }
     }
 }

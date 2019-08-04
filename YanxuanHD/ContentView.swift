@@ -12,7 +12,7 @@ let kBrandColor = Color.init(red: 0.83, green: 0.16, blue: 0.18)
 let kBrandUIColor = UIColor.init(red: 0.83, green: 0.16, blue: 0.18, alpha: 1)
 
 struct ContentView : View {
-    let activeTabData = ActiveTabData()
+    var activeTabData = ActiveTabData()
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
             Sidebar()

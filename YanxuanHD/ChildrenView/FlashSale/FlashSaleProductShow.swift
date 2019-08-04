@@ -88,7 +88,8 @@ struct FlashSaleProductShow : View {
     }
     
     func progress(_ model: FlashSaleItemModel, width: CGFloat) -> CGFloat {
-        let factor = model.currentSellVolume / model.totalSellVolume
+        let factor = CGFloat(model.currentSellVolume) / CGFloat(model.totalSellVolume)
+        print("sell progress = \(factor)")
         return width * CGFloat(factor)
     }
 }

@@ -19,7 +19,6 @@ struct OverseaSection : View {
             if self.userData.list.count == 4 {
                 
                 ScrollView() {
-                    
                     HStack {
                         OverseaProductShow(product: self.userData.list[0], offsetX: 0, offsetY: -60)
                         OverseaProductShow(product: self.userData.list[1], offsetX: 0, offsetY: -60)
